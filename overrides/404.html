@@ -1,0 +1,17 @@
+{% extends "main.html" %}
+
+{% block content %}
+<div style="text-align:center; padding:3rem 1rem 4rem;">
+  <img src="{{ base_url }}/assets/logo.png" alt="Bannerbound crest"
+       style="width:96px;height:96px;filter:drop-shadow(0 4px 14px #0008);margin-bottom:1rem;">
+  <h1 style="font-family:'Cinzel',Georgia,serif;letter-spacing:0.06em;">These lands are uncharted</h1>
+  <p style="max-width:34rem;margin:0.6rem auto 1.6rem;font-size:1.05rem;">
+    No settlement stands here yet — the page you sought has been razed, renamed, or never founded.
+    Turn back to marked territory.
+  </p>
+  <p>
+    <a class="md-button md-button--primary" href="{{ base_url }}/">Return home</a>
+    <a class="md-button" href="{{ base_url }}/getting-started/">Getting started</a>
+  </p>
+</div>
+{% endblock %}
