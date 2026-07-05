@@ -605,3 +605,64 @@ table.mc-recipes tbody tr:hover { background: var(--md-accent-fg-color--transpar
   border-bottom: 8px solid transparent;
   border-left: 11px solid var(--md-default-fg-color--light);
 }
+
+/* --- Shapeless / order-independent recipes (Crafting Stone, anvil, assembly) --- */
+.mc-craft--loose { gap: 0.35rem; }
+
+.mc-loose {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.12rem;
+  min-height: 34px;
+  padding: 0.28rem 0.5rem;
+  border: 2px solid;
+  border-radius: 11px;
+  /* default: warm stone */
+  background: linear-gradient(180deg, #c9c3b4, #b1aa98);
+  border-color: #7c745f #efeadc #efeadc #7c745f;
+}
+/* Crafting Stone — cool grey stone */
+.mc-loose--stone {
+  background: linear-gradient(180deg, #c3c3c0, #a7a7a2);
+  border-color: #6f6f6a #eeeeea #eeeeea #6f6f6a;
+}
+/* Anvil / smithing — iron */
+.mc-loose--anvil {
+  background: linear-gradient(180deg, #949ba3, #6f777f);
+  border-color: #3d444b #cfd8df #cfd8df #3d444b;
+}
+
+.mc-item {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  flex: none;
+}
+.mc-item img {
+  width: 24px;
+  height: 24px;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  filter: drop-shadow(0 1px 1px #0003);
+}
+.mc-item--txt {
+  font-size: 0.5rem;
+  font-weight: 700;
+  color: #23262b;
+  text-transform: uppercase;
+  line-height: 1;
+  text-align: center;
+}
+
+.mc-plus {
+  font-weight: 800;
+  font-size: 0.85rem;
+  color: var(--bb-crimson);
+  margin: 0 1px;
+  text-shadow: 0 1px 0 #ffffff55;
+  flex: none;
+}
+.mc-loose--anvil .mc-plus { color: #3a1116; }

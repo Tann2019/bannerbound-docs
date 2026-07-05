@@ -105,6 +105,33 @@ def process(inputs, station, out_id, out_ct=1):
     return (f'<span class="mc-craft">{ins}{st}{arrow()}'
             f'{slot(out_id, out_ct, "mc-slot--out")}</span>')
 
+def loose_item(ing):
+    """A single ingredient sprite (no grid slot) for order-independent recipes."""
+    if ing.get("tag"):
+        tagname = ing["tag"].split(":")[-1].replace("_", " ")
+        return (f'<span class="mc-item mc-item--txt" title="any {esc(tagname)}">'
+                f'{esc(tagname[:4])}</span>')
+    idstr = ing.get("item") or ing.get("id")
+    fn = icon_file(idstr)
+    nm = name(idstr)
+    c = ing.get("count", 1)
+    ct = f'<i class="mc-ct">{c}</i>' if c and c != 1 else ''
+    if not fn:
+        return f'<span class="mc-item mc-item--txt" title="{esc(nm)}">{esc(nm[:4])}{ct}</span>'
+    return (f'<span class="mc-item"><img src="../../assets/items/{fn}" alt="{esc(nm)}" '
+            f'title="{esc(nm)}" loading="lazy">{ct}</span>')
+
+def shapeless(ings, out_id, out_ct=1, variant=""):
+    """Order-independent recipe: loose ingredients on a themed panel, joined by '+', -> result."""
+    parts = []
+    for idx, ing in enumerate(ings):
+        if idx:
+            parts.append('<span class="mc-plus">+</span>')
+        parts.append(loose_item(ing))
+    cls = ("mc-loose " + variant).strip()
+    return (f'<span class="mc-craft mc-craft--loose"><span class="{cls}">{"".join(parts)}</span>'
+            f'{arrow()}{slot(out_id, out_ct, "mc-slot--out")}</span>')
+
 def htable(headers, rows):
     h = "".join(f"<th>{esc(x)}</th>" for x in headers)
     body = "".join("<tr>" + "".join(f"<td>{c}</td>" for c in r) + "</tr>" for r in rows)
@@ -158,12 +185,13 @@ for d in map(load, files("crafting_stone_recipes")):
     out, c = result_of(d)
     ings = d["ingredients"]
     rows.append((name(out), name_cell(out, c), ing_text(ings),
-                 grid(ing_pairs(ings), out, c)))
+                 shapeless(ings, out, c, "mc-loose--stone")))
 rows.sort(key=lambda r: r[0])
 S.append(("Crafting Stone",
     "Stack the loose ingredients on a carved "
     "[Crafting Stone](../antiquity/knapping.md#using-the-crafting-stone) and sneak-right-click to knap "
-    "them together. Order doesn't matter — the grid below just shows the ingredients.",
+    "them together. Order doesn't matter — the ingredients simply rest on the stone, shown on the grey "
+    "panel below.",
     htable(["Makes", "Ingredients", "Recipe"], [(r[1], r[2], r[3]) for r in rows])))
 
 # ---- Inventory grid --------------------------------------------------------
@@ -185,7 +213,7 @@ for d in map(load, files("recipe")):
         itxt = ing_text([{"item": (v.get("item") or v.get("id"))} for v in key.values()])
     elif "ingredients" in d:
         ings = d["ingredients"]
-        vis = grid(ing_pairs(ings), out, c)
+        vis = shapeless(ings, out, c)
         itxt = ing_text(ings)
     else:
         continue
@@ -201,7 +229,7 @@ for d in map(load, files("anvil_recipes")):
     out, c = result_of(d)
     ings = d.get("ingredients", [])
     rows.append((name(out), name_cell(out, c), ing_text(ings),
-                 grid(ing_pairs(ings), out, c), d.get("strikes", "?")))
+                 shapeless(ings, out, c, "mc-loose--anvil"), d.get("strikes", "?")))
 rows.sort(key=lambda r: r[0])
 S.append(("Stone Anvil — cold-hammer forging",
     "Haft and forge cast parts into finished tools on the "
@@ -342,7 +370,7 @@ asm_rows = []
 for d in map(load, files("carpentry_assembly")):
     out = d["result"]
     asm_rows.append((name(out), name_cell(out, d.get("yield", 1)),
-                     grid(ing_pairs(d["ingredients"]), out, d.get("yield", 1))))
+                     shapeless(d["ingredients"], out, d.get("yield", 1))))
 asm_rows.sort(key=lambda r: r[0])
 asm = htable(["Assembles", "Recipe"], [(r[1], r[2]) for r in asm_rows])
 S.append(("Woodworking Table",
@@ -404,9 +432,15 @@ tags:
 
 <p class="bb-lead"><em>Every custom recipe in the Antiquity age, rendered as a crafting grid and pulled directly from the modpack's own data — exhaustive, and always matching the version you're playing. Hover any icon for its name; use Ctrl&#8202;+&#8202;F to jump to an item.</em></p>
 
-!!! abstract "How to read the grids"
+!!! abstract "How to read the recipes"
 
-    Each recipe shows its **ingredients → result**. A machine icon in the middle (kiln, bloomery, pottery slab, cooking pot…) marks a station process rather than a hand-craft. Crafting Stone recipes are *shapeless* — ingredient positions don't matter. Timings are in seconds; **mB** (millibuckets) measure liquid metal, one ore piece = 50&nbsp;mB.
+    Each recipe shows its **ingredients → result**. The layout tells you *how* it's made:
+
+    - A **rounded grey/iron panel** with `+` signs means the recipe is **shapeless** — arrangement doesn't matter. Used for the Crafting Stone, anvil forging, and assemblies.
+    - A **3×3 grid** means it's a **shaped** recipe where the positions matter (a few inventory-grid crafts).
+    - A **machine icon** in the middle marks a **station process** (kiln, bloomery, pottery slab, cooking pot, drying rack…).
+
+    Timings are in seconds; **mB** (millibuckets) measure liquid metal, where one ore piece melts to 50&nbsp;mB.
 
 !!! note "Auto-generated"
 
