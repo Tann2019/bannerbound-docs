@@ -386,13 +386,51 @@ S.append(("Mason's Bench",
     "Dressing stone at the [Mason's Bench](../antiquity/masonry.md); cost is in blocks of the base "
     "stone you load.", mason))
 
-# ---- Knapping thresholds (data) -------------------------------------------
-krows = sorted((name_cell(d["head"]), f"{d.get('percentage_standard', '?')}%",
-                f"{d.get('percentage_fine', '?')}%") for d in map(load, files("knapping_shapes")))
-S.append(("Knapping — tool-head shapes",
-    "Heads knapped on the [Crafting Stone](../antiquity/knapping.md); the minigame grades each "
-    "**Standard** or **Fine** by how accurately you strike.",
-    htable(["Tool head", "Standard at", "Fine at"], krows)))
+# ---- Knapping: 3x3 shape silhouettes --------------------------------------
+def knap_shape(keep, head_id):
+    """The 3x3 knapping silhouette: kept cells stay stone, the rest are chipped away, -> head."""
+    kept = set(keep)
+    cells = "".join(
+        f'<span class="mc-knap-cell mc-knap-cell--{"stone" if i in kept else "chip"}"></span>'
+        for i in range(9))
+    return (f'<span class="mc-craft mc-craft--knap"><span class="mc-knap-grid" role="img" '
+            f'aria-label="knapping silhouette">{cells}</span>'
+            f'{arrow()}{slot(head_id, 1, "mc-slot--out")}</span>')
+
+def simple_io(in_id, out_id, out_ct=1):
+    return (f'<span class="mc-craft">{slot(in_id, 1)}{arrow()}'
+            f'{slot(out_id, out_ct, "mc-slot--out")}</span>')
+
+icon_file("minecraft:stone")  # kept-cell stone texture referenced by the CSS
+krows = []
+for d in sorted(map(load, files("knapping_shapes")), key=lambda x: name(x["head"])):
+    h = d["head"]
+    krows.append((name_cell(h), knap_shape(d["keep"], h),
+                  f'{d.get("percentage_standard", "?")}%', f'{d.get("percentage_fine", "?")}%'))
+S.append(("Knapping — chipping tool heads",
+    "Knapping is a craft all its own. Hold a **Rock** in each hand (a Stone, Sandstone, or Red Sandstone "
+    "Rock) and right-click to open the knapping screen — a **3×3 block of stone**. Chip cells away until "
+    "only the head's silhouette (the lit stone below) is left; flake off the wrong cell and you *break "
+    "the stone* and lose a rock. Once the shape matches, a timing minigame (*tap as each circle hits the "
+    "ring*) grades the head — **Standard** at the listed share of clean taps, **Fine** above it. Costs "
+    "one rock and needs the Knapping research. See [Knapping](../antiquity/knapping.md).",
+    htable(["Tool head", "Chip to this shape", "Standard", "Fine"], krows)))
+
+# ---- Knapping on a hard surface (world interactions) ----------------------
+S.append(("Knapping on a hard surface",
+    "Some knapping needs no screen at all — just right-click a **hard stone surface** (natural stone, "
+    "cobblestone, or exposed rock) with the item in hand.",
+    htable(["Makes", "Recipe", "How"], [
+        (name_cell("bannerboundantiquity:flint_blade"),
+         simple_io("minecraft:flint", "bannerboundantiquity:flint_blade"),
+         "Right-click hard stone with Flint"),
+        (name_cell("minecraft:flint"),
+         simple_io("minecraft:gravel", "minecraft:flint"),
+         "Right-click hard stone with Gravel — about a 1-in-4 chance, and it uses up the gravel"),
+        (name_cell("bannerboundantiquity:bone_blade", 2),
+         simple_io("minecraft:bone", "bannerboundantiquity:bone_blade", 2),
+         "Right-click hard stone with a Bone"),
+    ])))
 
 # ---- Metals, moulds, alloys (data) ----------------------------------------
 mw = load(os.path.join(ANTI, "metalworking/definitions.json"))
