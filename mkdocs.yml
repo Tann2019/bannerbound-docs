@@ -193,6 +193,7 @@ nav:
       - Building Materials: antiquity/building.md
   - Reference:
       - reference/index.md
+      - Recipe Reference: reference/recipes.md
       - Keybinds & Commands: reference/keybinds-and-commands.md
       - The Chronicle & Ponder: reference/codex-and-ponder.md
       - Optional Mods: reference/optional-mods.md
