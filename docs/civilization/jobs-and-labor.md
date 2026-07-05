@@ -176,6 +176,9 @@ Build a pen in claimed grassland and bind it with the rod. A valid pen must be *
 
 Open the **Herd & harvest** panel to set **"keep N adults"** — the herd grows toward that number, then surplus adults are harvested into your **harvest storage**. Choose *Auto* to breed the pen to full and never cull. Note the two storage roles: **food storage** is needed to *breed*, **harvest storage** is needed to *cull*.
 
+!!! tip "Escapes and the gate"
+    Animals do sometimes slip out of the pen, and your Herder will chase down its own escapees up to **~32 blocks** away, calming them into a loose following herd (the "rope" is cosmetic — there's no real leash) and leading them home **up to six at a time**. To stop the rest of the herd wandering off during a round-up, the Herder keeps the pen's **gate shut while it's out gathering and opens it only on the way back in** — so very few animals escape while it works. Help it out with a **single gate** and a fully sealed fence: the fewer openings, the smaller the window for a wanderer.
+
 !!! note "Muck out the pen"
     Penned livestock leave **manure** pats on the ground, and a fouled pen **breeds poorly** until it's cleared — your Herder mucks it out as routine upkeep. Breaking a pat (a shovel is quickest) yields **Dung**: with **Fertilization** researched, it's an era-appropriate fertilizer you right-click onto crops or saplings by hand to hurry their growth, exactly like bone meal. That's separate from the Farmer's automatic field fertilizing.
 
