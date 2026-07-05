@@ -442,3 +442,166 @@
   .bb-hero__title { font-size: 2.1rem; }
   .bb-hero { padding: 2.2rem 1rem 2rem; }
 }
+
+/* ======================================================================
+   RECIPE GRIDS — Minecraft-GUI style (used on the Recipe Reference page)
+   ====================================================================== */
+.mc-scroll {
+  overflow-x: auto;
+  margin: 0.6rem 0 1.2rem;
+  -webkit-overflow-scrolling: touch;
+}
+table.mc-recipes {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.72rem;
+  border: 1px solid var(--bb-hairline);
+  border-radius: 6px;
+  overflow: hidden;
+}
+table.mc-recipes th {
+  background: var(--bb-surface-2);
+  color: var(--md-default-fg-color);
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-align: left;
+  padding: 0.4rem 0.6rem;
+  border-bottom: 1px solid var(--bb-hairline);
+  white-space: nowrap;
+}
+table.mc-recipes td {
+  padding: 0.35rem 0.6rem;
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+  vertical-align: middle;
+}
+table.mc-recipes tr:last-child td { border-bottom: none; }
+table.mc-recipes tbody tr:hover { background: var(--md-accent-fg-color--transparent); }
+
+/* Name cell: inline icon + gold item name */
+.mc-namecell {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  white-space: nowrap;
+}
+.mc-namecell > span:last-child {
+  font-weight: 600;
+  color: var(--bb-gold-deep);
+}
+[data-md-color-scheme="slate"] .mc-namecell > span:last-child { color: var(--bb-gold-bright); }
+
+/* The craft row: [grid] → [result], or [inputs][machine] → [result] */
+.mc-craft {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+/* MC inventory panel behind a 3x3 grid */
+.mc-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3px;
+  padding: 3px;
+  background: #c6c6c6;
+  border: 2px solid;
+  border-color: #373737 #fdfdfd #fdfdfd #373737;
+}
+
+/* A single inventory slot: recessed grey square */
+.mc-slot {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  box-sizing: border-box;
+  background: #8b8b8b;
+  border: 2px solid;
+  border-color: #373737 #ffffff #ffffff #373737;
+  flex: none;
+}
+.mc-slot img {
+  width: 22px;
+  height: 22px;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+/* Loose slots (station processes) sit on their own, add a faint panel */
+.mc-craft > .mc-slot { background: #8b8b8b; }
+
+/* Result slot — a touch larger with a gold ring */
+.mc-slot--out {
+  width: 34px;
+  height: 34px;
+  box-shadow: 0 0 0 2px var(--bb-gold);
+  margin-left: 0.15rem;
+}
+.mc-slot--out img { width: 26px; height: 26px; }
+
+/* Machine/station slot — bluish tint so it reads as "the station" */
+.mc-slot--machine {
+  background: #6b7f86;
+  border-color: #2b3a3f #cfe0e5 #cfe0e5 #2b3a3f;
+}
+
+/* Inline icon in a name cell — no slot chrome, just the sprite */
+.mc-slot--inline {
+  width: 22px;
+  height: 22px;
+  background: transparent;
+  border: none;
+}
+.mc-slot--inline img { width: 20px; height: 20px; }
+
+/* Text fallback when an icon is unavailable */
+.mc-slot--txt {
+  font-size: 0.5rem;
+  font-weight: 700;
+  color: #2a2a2a;
+  text-transform: uppercase;
+}
+
+/* Item count badge, bottom-right, MC-style white with shadow */
+.mc-ct {
+  position: absolute;
+  right: -1px;
+  bottom: -3px;
+  font-family: "JetBrains Mono", monospace;
+  font-style: normal;
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 1px 1px 0 #3a3a3a;
+  line-height: 1;
+}
+
+/* The arrow between ingredients and result */
+.mc-arrow {
+  position: relative;
+  width: 26px;
+  height: 16px;
+  flex: none;
+}
+.mc-arrow::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 16px;
+  height: 6px;
+  transform: translateY(-50%);
+  background: var(--md-default-fg-color--light);
+}
+.mc-arrow::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 11px solid var(--md-default-fg-color--light);
+}

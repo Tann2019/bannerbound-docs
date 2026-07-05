@@ -1,44 +1,36 @@
 #!/usr/bin/env python3
 """
-Generate docs/reference/recipes.md straight from the Bannerbound modpack's datapack JSON.
+Generate docs/reference/recipes.md from the Bannerbound modpack's datapack JSON, rendering
+each recipe as a Minecraft-style crafting grid (item icons in slots) plus supporting tables.
 
-The modpack ships every recipe as data JSON (crafting_stone_recipes, anvil_recipes,
-kiln_recipes, ...). This script parses all of it, resolves item ids to display names via
-the lang files, and writes a single comprehensive Recipe Reference page — so the page can
-never drift from the game.
+Item icons are extracted from the mod textures (MIT) and the vanilla 1.21.1 jar, and copied
+into docs/assets/items/. See iconlib.py for the id -> texture resolution.
 
-Usage (from the repo root):
+Usage (from repo root):
     python tools/gen_recipes.py
-
-By default it expects the mod source as a sibling checkout at ../Bannerbound. Override with:
-    BANNERBOUND_SRC=/path/to/Bannerbound python tools/gen_recipes.py
+Config via env: BANNERBOUND_SRC (mod checkout), MC_JAR (path to 1.21.1.jar).
 """
-import os, json, glob
+import os, json, glob, html
+from collections import Counter
+import iconlib
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(HERE)
-MOD = os.environ.get("BANNERBOUND_SRC", os.path.join(REPO, "..", "Bannerbound"))
-ANTI = os.path.join(MOD, "Antiquity/src/main/resources/data/bannerboundantiquity")
-COREL = os.path.join(MOD, "Core/src/main/resources/assets/bannerbound/lang/en_us.json")
-ANTIL = os.path.join(MOD, "Antiquity/src/main/resources/assets/bannerboundantiquity/lang/en_us.json")
+ANTI = os.path.join(iconlib.MOD, "Antiquity/src/main/resources/data/bannerboundantiquity")
+COREL = os.path.join(iconlib.MOD, "Core/src/main/resources/assets/bannerbound/lang/en_us.json")
+ANTIL = os.path.join(iconlib.MOD, "Antiquity/src/main/resources/assets/bannerboundantiquity/lang/en_us.json")
 OUT = os.path.join(REPO, "docs/reference/recipes.md")
+ICON_DIR = os.path.join(REPO, "docs/assets/items")
+os.makedirs(ICON_DIR, exist_ok=True)
 
-if not os.path.isdir(ANTI):
-    raise SystemExit(
-        f"Mod source not found at {MOD!r}.\n"
-        "Clone github.com/Nitsu430/Bannerbound next to this repo, or set BANNERBOUND_SRC."
-    )
-
-# ---- name resolution -------------------------------------------------------
+# ---- names -----------------------------------------------------------------
 lang = {}
 for p in (COREL, ANTIL):
     with open(p, encoding="utf-8") as f:
         lang.update(json.load(f))
 
 def pretty(idstr):
-    """Fallback for vanilla items: minecraft:cooked_beef -> Cooked Beef"""
-    path = idstr.split(":")[-1]
-    return " ".join(w.capitalize() for w in path.replace("_", " ").split())
+    return " ".join(w.capitalize() for w in idstr.split(":")[-1].replace("_", " ").split())
 
 def name(idstr):
     if not idstr:
@@ -47,72 +39,116 @@ def name(idstr):
         idstr = "minecraft:" + idstr
     ns, path = idstr.split(":", 1)
     for pre in ("item", "block"):
-        k = f"{pre}.{ns}.{path}"
-        if k in lang:
-            return lang[k]
+        if f"{pre}.{ns}.{path}" in lang:
+            return lang[f"{pre}.{ns}.{path}"]
     return pretty(idstr)
 
 def langkey(k):
     return lang.get(k, k)
 
-def secs(ticks):
-    return f"{ticks / 20.0:g}s"
+def secs(t):
+    return f"{t / 20.0:g}s"
 
-def load(path):
-    with open(path, encoding="utf-8") as f:
+def load(p):
+    with open(p, encoding="utf-8") as f:
         return json.load(f)
-
-def ing_list(ings):
-    parts = []
-    for i in ings:
-        if i.get("tag"):
-            nm = "#" + i["tag"].split(":")[-1].replace("_", " ").title()
-        else:
-            nm = name(i.get("item") or i.get("id") or "?")
-        c = i.get("count", 1)
-        parts.append(nm + (f" ×{c}" if c and c != 1 else ""))
-    return ", ".join(parts)
-
-def ing_single(x):
-    if isinstance(x, str):
-        return name(x)
-    if isinstance(x, dict):
-        if "item" in x:
-            return name(x["item"])
-        if "id" in x:
-            return name(x["id"])
-        if "tag" in x:
-            return "#" + x["tag"].split(":")[-1].replace("_", " ").title()
-    return "?"
-
-def result_of(d):
-    r = d.get("result", {})
-    if isinstance(r, str):
-        return name(r), 1
-    return name(r.get("id") or r.get("item")), r.get("count", 1)
-
-def qty(nm, c):
-    return nm + (f" ×{c}" if c != 1 else "")
-
-def tbl(headers, rows):
-    out = ["| " + " | ".join(headers) + " |",
-           "| " + " | ".join("---" for _ in headers) + " |"]
-    for r in rows:
-        out.append("| " + " | ".join(str(c) for c in r) + " |")
-    return "\n".join(out)
 
 def files(sub):
     return sorted(glob.glob(os.path.join(ANTI, sub, "*.json")))
 
-S = []  # (title, intro, table)
+def esc(s):
+    return html.escape(str(s), quote=True)
 
-# ---- Knapping --------------------------------------------------------------
-rows = sorted((name(d["head"]), f"{d.get('percentage_standard','?')}%", f"{d.get('percentage_fine','?')}%")
-              for d in map(load, files("knapping_shapes")))
-S.append(("Knapping (Crafting Stone shapes)",
-    "Knapped tool heads and the timing thresholds that grade them **Standard** vs **Fine**. "
-    "See [Knapping](../antiquity/knapping.md).",
-    tbl(["Tool head", "Standard at", "Fine at"], rows)))
+# ---- icons -----------------------------------------------------------------
+_icons = {}
+def icon_file(idstr):
+    if idstr in _icons:
+        return _icons[idstr]
+    r = iconlib.resolve_png(idstr)
+    if not r:
+        _icons[idstr] = None
+        return None
+    _ns, _path, data = r
+    fn = iconlib.safe_name(idstr) + ".png"
+    with open(os.path.join(ICON_DIR, fn), "wb") as f:
+        f.write(data)
+    _icons[idstr] = fn
+    return fn
+
+# ---- slot / grid / process HTML -------------------------------------------
+def slot(idstr, count=1, cls=""):
+    if not idstr:
+        return '<span class="mc-slot"></span>'
+    fn = icon_file(idstr)
+    nm = name(idstr)
+    ct = f'<i class="mc-ct">{count}</i>' if count and count != 1 else ''
+    if not fn:
+        return (f'<span class="mc-slot mc-slot--txt {cls}" title="{esc(nm)}">'
+                f'{esc(nm.split()[0][:4])}{ct}</span>')
+    return (f'<span class="mc-slot {cls}"><img src="../../assets/items/{fn}" alt="{esc(nm)}" '
+            f'title="{esc(nm)}" loading="lazy">{ct}</span>')
+
+def arrow():
+    return '<span class="mc-arrow" aria-hidden="true"></span>'
+
+def grid(cells, out_id, out_ct=1):
+    """cells: up to 9 (id, count) or None, row-major."""
+    inner = "".join(slot(*cells[i]) if i < len(cells) and cells[i] else slot(None)
+                     for i in range(9))
+    return (f'<span class="mc-craft"><span class="mc-grid">{inner}</span>'
+            f'{arrow()}{slot(out_id, out_ct, "mc-slot--out")}</span>')
+
+def process(inputs, station, out_id, out_ct=1):
+    """inputs: list of (id, count). station: id or None."""
+    ins = "".join(slot(i, c) for i, c in inputs)
+    st = slot(station, 1, "mc-slot--machine") if station else ""
+    return (f'<span class="mc-craft">{ins}{st}{arrow()}'
+            f'{slot(out_id, out_ct, "mc-slot--out")}</span>')
+
+def htable(headers, rows):
+    h = "".join(f"<th>{esc(x)}</th>" for x in headers)
+    body = "".join("<tr>" + "".join(f"<td>{c}</td>" for c in r) + "</tr>" for r in rows)
+    return (f'<div class="mc-scroll"><table class="mc-recipes"><thead><tr>{h}</tr>'
+            f'</thead><tbody>{body}</tbody></table></div>')
+
+def mdtable(headers, rows):
+    out = ["| " + " | ".join(headers) + " |", "| " + " | ".join("---" for _ in headers) + " |"]
+    out += ["| " + " | ".join(str(c) for c in r) + " |" for r in rows]
+    return "\n".join(out)
+
+def result_of(d):
+    r = d.get("result", {})
+    if isinstance(r, str):
+        return r, 1
+    return (r.get("id") or r.get("item")), r.get("count", 1)
+
+def ing_pairs(ings):
+    """[{item,count}] -> [(id, count)], tags -> ('#tag', count) sentinel handled by slot txt."""
+    out = []
+    for i in ings:
+        if i.get("tag"):
+            out.append((None, i.get("count", 1)))  # tag: render empty-ish; name in text col
+        else:
+            out.append((i.get("item") or i.get("id"), i.get("count", 1)))
+    return out
+
+def ing_text(ings):
+    parts = []
+    for i in ings:
+        if i.get("tag"):
+            nm = "any " + i["tag"].split(":")[-1].replace("_", " ")
+        else:
+            nm = name(i.get("item") or i.get("id") or "?")
+        c = i.get("count", 1)
+        parts.append(nm + (f" ×{c}" if c and c != 1 else ""))
+    return esc(", ".join(parts))
+
+def name_cell(idstr, count=1):
+    ic = slot(idstr, 1, "mc-slot--inline")
+    return f'<span class="mc-namecell">{ic}<span>{esc(name(idstr))}' + \
+           (f' ×{count}' if count != 1 else '') + '</span></span>'
+
+S = []  # (title, intro, html_or_md)
 
 # ---- Crafting Stone --------------------------------------------------------
 rows = []
@@ -120,188 +156,261 @@ for d in map(load, files("crafting_stone_recipes")):
     if "ingredients" not in d:
         continue
     out, c = result_of(d)
-    rows.append((qty(out, c), ing_list(d["ingredients"])))
-rows.sort()
+    ings = d["ingredients"]
+    rows.append((name(out), name_cell(out, c), ing_text(ings),
+                 grid(ing_pairs(ings), out, c)))
+rows.sort(key=lambda r: r[0])
 S.append(("Crafting Stone",
     "Stack the loose ingredients on a carved "
-    "[Crafting Stone](../antiquity/knapping.md#using-the-crafting-stone) and sneak-right-click to knap them.",
-    tbl(["Makes", "From"], rows)))
+    "[Crafting Stone](../antiquity/knapping.md#using-the-crafting-stone) and sneak-right-click to knap "
+    "them together. Order doesn't matter — the grid below just shows the ingredients.",
+    htable(["Makes", "Ingredients", "Recipe"], [(r[1], r[2], r[3]) for r in rows])))
 
 # ---- Inventory grid --------------------------------------------------------
-from collections import Counter
 rows = []
 for d in map(load, files("recipe")):
-    if "ingredients" in d:
-        ings = ing_list(d["ingredients"])
-    elif "pattern" in d:
-        cnt = Counter("".join(d["pattern"]).replace(" ", ""))
+    out, c = result_of(d)
+    if "pattern" in d:
         key = d.get("key", {})
-        ings = ", ".join(qty(ing_single(key.get(sym, {})), n) for sym, n in cnt.items())
+        cells = []
+        for ch in ("".join(d["pattern"]).ljust(9))[:9]:
+            k = key.get(ch)
+            if not k:
+                cells.append(None)
+            else:
+                cells.append((k.get("item") or k.get("id"), 1))
+        ings = [{"item": (v.get("item") or v.get("id")), "count":
+                 Counter("".join(d["pattern"]))[ch2]} for ch2, v in key.items()]
+        vis = grid(cells, out, c)
+        itxt = ing_text([{"item": (v.get("item") or v.get("id"))} for v in key.values()])
+    elif "ingredients" in d:
+        ings = d["ingredients"]
+        vis = grid(ing_pairs(ings), out, c)
+        itxt = ing_text(ings)
     else:
         continue
-    out, c = result_of(d)
-    rows.append((qty(out, c), ings, "2×2 / grid"))
-rows.sort()
+    rows.append((name(out), name_cell(out, c), itxt, vis))
+rows.sort(key=lambda r: r[0])
 S.append(("Inventory Crafting Grid",
     "Recipes made in the ordinary 2×2 (or crafting-table) grid — the bootstrap crafts of the age.",
-    tbl(["Makes", "From", "Where"], rows)))
+    htable(["Makes", "Ingredients", "Recipe"], [(r[1], r[2], r[3]) for r in rows])))
 
-# ---- Woodworking -----------------------------------------------------------
-wood = tbl(["Output (of the worked wood)", "Log cost", "Yield"],
-    sorted((pretty(d["variant"]), f"{d.get('log_cost','?')} log", d.get("yield", 1))
-           for d in map(load, files("carpentry_outputs"))))
-asm = tbl(["Assembles", "From"],
-    sorted((qty(name(d["result"]), d.get("yield", 1)), ing_list(d["ingredients"]))
-           for d in map(load, files("carpentry_assembly"))))
-S.append(("Woodworking Table",
-    "Batch-sawing outputs and assembly recipes at the [Woodworking Table](../antiquity/woodworking.md). "
-    "Simple outputs cost logs of whichever wood you load; assemblies combine set ingredients.",
-    "**Sawn outputs**\n\n" + wood + "\n\n**Assemblies**\n\n" + asm))
-
-# ---- Masonry ---------------------------------------------------------------
-rows = sorted((pretty(d["variant"]), f"{d.get('base_cost','?')} stone", d.get("yield", 1))
-              for d in map(load, files("masonry_outputs")))
-S.append(("Mason's Bench",
-    "Dressing stone at the [Mason's Bench](../antiquity/masonry.md). Cost is in blocks of the base stone you load.",
-    tbl(["Output", "Stone cost", "Yield"], rows)))
-
-# ---- Pottery ---------------------------------------------------------------
-rows = []
-for d in map(load, files("pottery_recipes")):
-    out, c = result_of(d)
-    rows.append((qty(out, c), ing_list(d["ingredients"]), d.get("spins", "?")))
-rows.sort()
-S.append(("Pottery Slab",
-    "Shaping clay at the [Pottery Slab](../antiquity/pottery.md); each needs a number of spins of the minigame. "
-    "Unfired ceramics are then hardened in the Kiln (below).",
-    tbl(["Shapes", "From", "Spins"], rows)))
-
-# ---- Kiln ------------------------------------------------------------------
-rows = []
-for d in map(load, files("kiln_recipes")):
-    out, c = result_of(d)
-    rows.append((qty(out, c), ing_single(d["ingredient"]), secs(d.get("ticks", 0)),
-                 f"{int(d.get('chance', 1.0) * 100)}%"))
-rows.sort()
-S.append(("Kiln (firing)",
-    "Baking clay, ceramics, and lime in the [Kiln](../antiquity/pottery.md#firing-the-kiln).",
-    tbl(["Fires into", "From", "Time", "Yield"], rows)))
-
-# ---- Bloomery --------------------------------------------------------------
-rows = []
-for d in map(load, files("bloomery_recipes")):
-    out, c = result_of(d)
-    rows.append((qty(out, c), ing_single(d["ingredient"]), secs(d.get("ticks", 0)),
-                 f"{int(d.get('chance', 1.0) * 100)}%"))
-rows.sort()
-S.append(("Bloomery (smelting)",
-    "Straight smelting in the [Bloomery](../antiquity/metalworking.md#the-bloomery-your-first-furnace). "
-    "For bronze-age parts, melt ore in a crucible instead — see the metal chart below.",
-    tbl(["Smelts into", "From", "Time", "Yield"], rows)))
-
-# ---- Metals, moulds, alloys ------------------------------------------------
-mw = load(os.path.join(ANTI, "metalworking/definitions.json"))
-mrows = sorted(((m.capitalize(), f"{v['melt_point']} °C", f"{v['mb_per_unit']} mB/piece")
-                for m, v in mw["metals"].items()), key=lambda r: int(r[1].split()[0]))
-prows = [(pretty(shape), f"{mb} mB", f"{-(-mb // 50)} ore pieces")
-         for shape, mb in sorted(mw["molds"].items(), key=lambda kv: kv[1])]
-alloy = mw["alloys"][0]["components"]
-alloytxt = ", ".join(f"{k} {int(v['min'] * 100)}–{int(v['max'] * 100)}%" for k, v in alloy.items())
-S.append(("Metals, moulds & alloys",
-    "The numbers behind [casting and forging](../antiquity/metalworking.md). Each ore piece is **50 mB**; "
-    f"**bronze** is alloyed in the crucible ({alloytxt}).",
-    "**Metals**\n\n" + tbl(["Metal", "Melts at", "Volume"], mrows) +
-    "\n\n**Mould metal cost**\n\n" + tbl(["Mould", "Metal needed", "Min. ore"], prows)))
-
-# ---- Anvil -----------------------------------------------------------------
+# ---- Stone Anvil -----------------------------------------------------------
 rows = []
 for d in map(load, files("anvil_recipes")):
     out, c = result_of(d)
-    rows.append((out, ing_list(d.get("ingredients", [])), d.get("strikes", "?")))
-rows.sort()
-S.append(("Stone Anvil (cold-hammer forging)",
-    "Hafting and forging cast parts into finished tools on the "
-    "[Stone Anvil](../antiquity/metalworking.md#cold-hammer-forging). Strikes = clean hits the minigame needs.",
-    tbl(["Forges", "From", "Strikes"], rows)))
+    ings = d.get("ingredients", [])
+    rows.append((name(out), name_cell(out, c), ing_text(ings),
+                 grid(ing_pairs(ings), out, c), d.get("strikes", "?")))
+rows.sort(key=lambda r: r[0])
+S.append(("Stone Anvil — cold-hammer forging",
+    "Haft and forge cast parts into finished tools on the "
+    "[Stone Anvil](../antiquity/metalworking.md#cold-hammer-forging). *Strikes* is the number of clean "
+    "hits the timing minigame needs; land them for higher quality.",
+    htable(["Forges", "Ingredients", "Recipe", "Strikes"], [(r[1], r[2], r[3], r[4]) for r in rows])))
+
+# ---- Pottery ---------------------------------------------------------------
+POTTERY = "bannerboundantiquity:pottery_slab"
+rows = []
+for d in map(load, files("pottery_recipes")):
+    out, c = result_of(d)
+    ings = d["ingredients"]
+    rows.append((name(out), name_cell(out, c),
+                 process(ing_pairs(ings), POTTERY, out, c), d.get("spins", "?")))
+rows.sort(key=lambda r: r[0])
+S.append(("Pottery Slab",
+    "Shaping clay on the [Pottery Slab](../antiquity/pottery.md); *spins* is how many turns of the "
+    "throwing minigame it takes. Fire the unfired result in a Kiln (below).",
+    htable(["Shapes", "Recipe", "Spins"], [(r[1], r[2], r[3]) for r in rows])))
+
+# ---- Kiln ------------------------------------------------------------------
+KILN = "bannerboundantiquity:kiln"
+rows = []
+for d in map(load, files("kiln_recipes")):
+    out, c = result_of(d)
+    inp = d["ingredient"].get("item") or d["ingredient"].get("id")
+    rows.append((name(out), name_cell(out, c), process([(inp, 1)], KILN, out, c),
+                 secs(d.get("ticks", 0)), f"{int(d.get('chance', 1.0) * 100)}%"))
+rows.sort(key=lambda r: r[0])
+S.append(("Kiln — firing",
+    "Baking clay, ceramics, and lime in the [Kiln](../antiquity/pottery.md#firing-the-kiln).",
+    htable(["Fires into", "Recipe", "Time", "Yield"], [(r[1], r[2], r[3], r[4]) for r in rows])))
+
+# ---- Bloomery --------------------------------------------------------------
+BLOOM = "bannerboundantiquity:bloomery"
+rows = []
+for d in map(load, files("bloomery_recipes")):
+    out, c = result_of(d)
+    inp = d["ingredient"].get("item") or d["ingredient"].get("id")
+    rows.append((name(out), name_cell(out, c), process([(inp, 1)], BLOOM, out, c),
+                 secs(d.get("ticks", 0)), f"{int(d.get('chance', 1.0) * 100)}%"))
+rows.sort(key=lambda r: r[0])
+S.append(("Bloomery — smelting",
+    "Straight smelting in the [Bloomery](../antiquity/metalworking.md#the-bloomery-your-first-furnace). "
+    "To make bronze-age *parts*, melt ore in a crucible instead (see the metal chart below).",
+    htable(["Smelts into", "Recipe", "Time", "Yield"], [(r[1], r[2], r[3], r[4]) for r in rows])))
 
 # ---- Drying ----------------------------------------------------------------
+RACK = "bannerboundantiquity:oak_drying_rack"
 rows = []
 for d in map(load, files("drying_recipes")):
     out, c = result_of(d)
-    rows.append((out, name(d["input"]), secs(d.get("ticks", 0))))
-rows.sort()
+    rows.append((name(out), name_cell(out, c), process([(d["input"], 1)], RACK, out, c),
+                 secs(d.get("ticks", 0))))
+rows.sort(key=lambda r: r[0])
 S.append(("Drying Rack",
-    "Air-drying on a [Drying Rack](../antiquity/cooking-and-food.md) — preserved food and thatch bundles.",
-    tbl(["Dries into", "From", "Time"], rows)))
+    "Air-drying on a [Drying Rack](../antiquity/cooking-and-food.md) — preserved food, leather, and "
+    "thatch bundles.",
+    htable(["Dries into", "Recipe", "Time"], [(r[1], r[2], r[3]) for r in rows])))
 
 # ---- Stew ------------------------------------------------------------------
-rows = sorted((langkey(d["name"]), ing_list(d["ingredients"]), d.get("servings", "?"),
-               f"×{d.get('bonus', '?')}", secs(d.get("cook_ticks", 0)))
-              for d in map(load, files("stew_recipes")))
-S.append(("Cooking Pot (stews)",
+POT = "bannerboundantiquity:stone_cooking_pot"
+rows = []
+for d in map(load, files("stew_recipes")):
+    nm = langkey(d["name"])
+    ings = d["ingredients"]
+    rows.append((nm, esc(nm), process(ing_pairs(ings), POT, "minecraft:mushroom_stew", 1),
+                 ing_text(ings), d.get("servings", "?"), f"×{d.get('bonus', '?')}",
+                 secs(d.get("cook_ticks", 0))))
+rows.sort(key=lambda r: r[0])
+S.append(("Cooking Pot — stews",
     "Simmering [stews](../antiquity/cooking-and-food.md) in a Stone Cooking Pot over a lit campfire. "
-    "*Bonus* multiplies the food value of the ingredients.",
-    tbl(["Stew", "Ingredients", "Servings", "Food bonus", "Cook time"], rows)))
+    "*Bonus* multiplies the food value of the ingredients; each pot yields several servings.",
+    htable(["Stew", "Recipe", "Ingredients", "Servings", "Food bonus", "Cook time"],
+           [(r[1], r[2], r[3], r[4], r[5], r[6]) for r in rows])))
 
 # ---- Grog ------------------------------------------------------------------
-rows = sorted((langkey(d["name"]), name(d["input"]), d.get("servings", "?"),
-               d.get("food_value", "?"), secs(d.get("ferment_ticks", 0)))
-              for d in map(load, files("grog_recipes")))
-S.append(("Fermentation Trough (grog)",
+TROUGH = "bannerboundantiquity:oak_fermentation_trough"
+rows = []
+for d in map(load, files("grog_recipes")):
+    nm = langkey(d["name"])
+    rows.append((nm, esc(nm), process([(d["input"], 1)], TROUGH, "minecraft:potion", 1),
+                 name(d["input"]), d.get("servings", "?"), d.get("food_value", "?"),
+                 secs(d.get("ferment_ticks", 0))))
+rows.sort(key=lambda r: r[0])
+S.append(("Fermentation Trough — grog",
     "[Brewing](../antiquity/brewing.md) grog from crushed fermentables.",
-    tbl(["Grog", "From", "Servings", "Food value", "Ferment time"], rows)))
+    htable(["Grog", "Recipe", "From", "Servings", "Food value", "Ferment time"],
+           [(r[1], r[2], esc(r[3]), r[4], r[5], r[6]) for r in rows])))
 
 # ---- Mortar ----------------------------------------------------------------
-dye_rows, item_rows = [], []
+MORTAR = "bannerboundantiquity:mortar_and_pestle"
+item_rows, dye_rows = [], []
 for d in map(load, files("mortar_recipes")):
-    ing = ing_single(d.get("ingredient", "?"))
+    ing = d.get("ingredient", {})
+    ing_id = ing.get("item") or ing.get("id")
     if d.get("result_liquid"):
-        dye_rows.append((d["result_liquid"].replace("_", " ").title(), ing, d.get("base_liquid") or "water"))
+        color = d["result_liquid"].replace("_", " ").title()
+        dye_rows.append((color, esc(color), name_cell(ing_id), esc(d.get("base_liquid") or "water")))
     elif "result_item" in d or "result" in d:
         r = d.get("result_item") or d.get("result")
-        item_rows.append((qty(name(r.get("id") or r.get("item")), r.get("count", 1)), ing))
-dye_rows.sort(); item_rows.sort()
+        out = r.get("id") or r.get("item")
+        item_rows.append((name(out), name_cell(out, r.get("count", 1)),
+                          process([(ing_id, 1)], MORTAR, out, r.get("count", 1))))
+item_rows.sort(key=lambda r: r[0]); dye_rows.sort(key=lambda r: r[0])
 mtxt = ""
 if item_rows:
-    mtxt += "**Pastes, powders & poisons**\n\n" + tbl(["Grinds into", "From"], item_rows) + "\n\n"
+    mtxt += "**Pastes, powders & poisons**\n\n" + \
+        htable(["Grinds into", "Recipe"], [(r[1], r[2]) for r in item_rows]) + "\n\n"
 if dye_rows:
-    mtxt += "**Dyes & inks**\n\n" + tbl(["Dye / liquid", "From", "Base liquid"], dye_rows)
+    mtxt += "**Dyes & inks**\n\n" + \
+        htable(["Dye / liquid", "From", "Base"], [(r[1], r[2], r[3]) for r in dye_rows])
 S.append(("Mortar & Pestle",
-    "Grinding at the [Mortar & Pestle](../antiquity/herbalism.md) — poisons, pastes, and dye liquids.",
-    mtxt))
+    "Grinding at the [Mortar & Pestle](../antiquity/herbalism.md) — poisons, pastes, and dye liquids "
+    "(dyes colour a liquid rather than yielding an item).", mtxt))
 
 # ---- Fletching -------------------------------------------------------------
-fl = tbl(["Makes", "From", "Stretches"],
-    sorted((qty(*result_of(d)), ing_list(d["ingredients"]), d.get("stretches", "?"))
-           for d in map(load, files("fletching_recipes"))))
-arows = sorted(((d.get("slot", "?").title(), d.get("material", "?").title(), name(d.get("ingredient", "")),
-                 d.get("damage", "?"), d.get("weight", "?"), d.get("accuracy", "?"))
-                for d in map(load, files("arrow_parts"))), key=lambda r: (r[0], r[1]))
-ap = tbl(["Slot", "Material", "Item", "Damage", "Weight", "Accuracy"], arows)
+FLETCH = "bannerboundantiquity:fletching_station"
+rows = []
+for d in map(load, files("fletching_recipes")):
+    out, c = result_of(d)
+    ings = d["ingredients"]
+    rows.append((name(out), name_cell(out, c), process(ing_pairs(ings), FLETCH, out, c),
+                 ing_text(ings), d.get("stretches", "?")))
+rows.sort(key=lambda r: r[0])
 S.append(("Fletching Station",
-    "Binding arrows and tackle at the [Fletching Station](../antiquity/fletching-and-archery.md). "
-    "Every arrow mixes a **tip**, a **shaft**, and **fletching** — mix and match for the stats you want.",
-    "**Fletched items**\n\n" + fl + "\n\n**Arrow parts (tip / shaft / fletching stats)**\n\n" + ap))
+    "Binding arrows and tackle at the [Fletching Station](../antiquity/fletching-and-archery.md). Every "
+    "arrow mixes a **tip**, a **shaft**, and **fletching** — see the parts table below.",
+    htable(["Makes", "Recipe", "Ingredients", "Stretches"],
+           [(r[1], r[2], r[3], r[4]) for r in rows])))
+
+# ---- Woodworking & Masonry (log/stone-cost outputs) ------------------------
+wood = mdtable(["Output (of the worked wood)", "Log cost", "Yield"],
+    sorted((pretty(d["variant"]), f"{d.get('log_cost', '?')} log", d.get("yield", 1))
+           for d in map(load, files("carpentry_outputs"))))
+asm_rows = []
+for d in map(load, files("carpentry_assembly")):
+    out = d["result"]
+    asm_rows.append((name(out), name_cell(out, d.get("yield", 1)),
+                     grid(ing_pairs(d["ingredients"]), out, d.get("yield", 1))))
+asm_rows.sort(key=lambda r: r[0])
+asm = htable(["Assembles", "Recipe"], [(r[1], r[2]) for r in asm_rows])
+S.append(("Woodworking Table",
+    "At the [Woodworking Table](../antiquity/woodworking.md): batch-saw plain outputs from logs of "
+    "whichever wood you load (cost in logs), or assemble set recipes.",
+    "**Sawn outputs** — made from logs of the loaded wood.\n\n" + wood +
+    "\n\n**Assemblies**\n\n" + asm))
+
+mason = mdtable(["Output", "Stone cost", "Yield"],
+    sorted((pretty(d["variant"]), f"{d.get('base_cost', '?')} stone", d.get("yield", 1))
+           for d in map(load, files("masonry_outputs"))))
+S.append(("Mason's Bench",
+    "Dressing stone at the [Mason's Bench](../antiquity/masonry.md); cost is in blocks of the base "
+    "stone you load.", mason))
+
+# ---- Knapping thresholds (data) -------------------------------------------
+krows = sorted((name_cell(d["head"]), f"{d.get('percentage_standard', '?')}%",
+                f"{d.get('percentage_fine', '?')}%") for d in map(load, files("knapping_shapes")))
+S.append(("Knapping — tool-head shapes",
+    "Heads knapped on the [Crafting Stone](../antiquity/knapping.md); the minigame grades each "
+    "**Standard** or **Fine** by how accurately you strike.",
+    htable(["Tool head", "Standard at", "Fine at"], krows)))
+
+# ---- Metals, moulds, alloys (data) ----------------------------------------
+mw = load(os.path.join(ANTI, "metalworking/definitions.json"))
+mrows = sorted(((m.capitalize(), f"{v['melt_point']} °C", f"{v['mb_per_unit']} mB / piece")
+                for m, v in mw["metals"].items()), key=lambda r: int(r[1].split()[0]))
+prows = [(pretty(s), f"{mb} mB", f"{-(-mb // 50)} ore pieces")
+         for s, mb in sorted(mw["molds"].items(), key=lambda kv: kv[1])]
+alloy = mw["alloys"][0]["components"]
+atxt = ", ".join(f"{k} {int(v['min'] * 100)}–{int(v['max'] * 100)}%" for k, v in alloy.items())
+S.append(("Metals, moulds & alloys",
+    "The numbers behind [casting and forging](../antiquity/metalworking.md). Each ore piece melts to "
+    f"**50 mB**; **bronze** is alloyed in the crucible ({atxt}).",
+    "**Metals**\n\n" + mdtable(["Metal", "Melts at", "Volume"], mrows) +
+    "\n\n**Mould metal cost**\n\n" + mdtable(["Mould", "Metal needed", "Min. ore"], prows)))
+
+# ---- Arrow parts (data + icons) -------------------------------------------
+arows = []
+for d in map(load, files("arrow_parts")):
+    ing = d.get("ingredient", "")
+    arows.append((d.get("slot", "?").title(), d.get("material", "?").title(),
+                  name_cell(ing), d.get("damage", "?"), d.get("weight", "?"), d.get("accuracy", "?")))
+arows.sort(key=lambda r: (r[0], r[1]))
+S.append(("Arrow parts",
+    "Every arrow at the [Fletching Station](../antiquity/fletching-and-archery.md) mixes a **tip**, a "
+    "**shaft**, and **fletching**. Mix materials for the damage, weight, and accuracy you want.",
+    htable(["Slot", "Material", "Item", "Damage", "Weight", "Accuracy"], arows)))
 
 # ---- write -----------------------------------------------------------------
 header = """---
 title: Recipe Reference
-description: Every Bannerbound crafting recipe, generated straight from the modpack's data so it always matches the game — knapping, Crafting Stone, woodworking, masonry, pottery, smelting, forging, cooking, brewing, and fletching.
+description: Every Bannerbound crafting recipe as a visual grid, generated straight from the modpack's data so it always matches the game — knapping, Crafting Stone, woodworking, masonry, pottery, smelting, forging, cooking, brewing, and fletching.
 tags:
   - reference
 ---
 
 # Recipe Reference
 
-<p class="bb-lead"><em>Every custom recipe in the Antiquity age, pulled directly from the modpack's own data files — so this list is exhaustive and always matches the version you're playing. Use your browser's find (Ctrl&#8202;+&#8202;F) to jump to any item.</em></p>
+<p class="bb-lead"><em>Every custom recipe in the Antiquity age, rendered as a crafting grid and pulled directly from the modpack's own data — exhaustive, and always matching the version you're playing. Hover any icon for its name; use Ctrl&#8202;+&#8202;F to jump to an item.</em></p>
 
-!!! abstract "How to read this page"
+!!! abstract "How to read the grids"
 
-    Recipes are grouped by the **station** that makes them. Timings are shown in seconds; **mB** (millibuckets) measure liquid metal, where one raw-ore piece melts to 50&nbsp;mB. For *how* each station works and its minigame, follow the link under each heading to the full guide. Vanilla item names are shown as they appear in-game.
+    Each recipe shows its **ingredients → result**. A machine icon in the middle (kiln, bloomery, pottery slab, cooking pot…) marks a station process rather than a hand-craft. Crafting Stone recipes are *shapeless* — ingredient positions don't matter. Timings are in seconds; **mB** (millibuckets) measure liquid metal, one ore piece = 50&nbsp;mB.
 
 !!! note "Auto-generated"
 
-    This page is built by `tools/gen_recipes.py` from the modpack source. If a recipe here disagrees with another page, this one is the source of truth — please report the mismatch (or re-run the generator).
+    Built by `tools/gen_recipes.py` from the modpack source and item textures. If a recipe here disagrees with another page, this one is the source of truth — re-run the generator or report the mismatch.
 
 """
 
@@ -314,8 +423,10 @@ footer = """
 - [Glossary](glossary.md) — terms used throughout the wiki.
 """
 
-body = "\n".join(f"## {t}\n\n{intro}\n\n{table}\n" for t, intro, table in S)
+body = "\n".join(f"## {t}\n\n{intro}\n\n{tbl}\n" for t, intro, tbl in S)
 with open(OUT, "w", encoding="utf-8") as f:
     f.write(header + body + footer)
 
-print(f"Wrote {OUT} ({len(S)} sections)")
+n_icons = sum(1 for v in _icons.values() if v)
+print(f"Wrote {OUT}")
+print(f"Sections: {len(S)}   Icons copied: {n_icons}   (unresolved: {sum(1 for v in _icons.values() if not v)})")
