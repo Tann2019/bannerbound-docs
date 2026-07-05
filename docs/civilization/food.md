@@ -18,7 +18,7 @@ Open the town hall and find the **Food** line (once your scholars have unlocked 
 
 - **Net food: +/- N/s** — the single number that matters. Positive means the reserve is filling; negative means it is draining.
 - A live **status word** on the line itself — **Surplus**, **Draining**, or **Starving!** — telling you at a glance which way things are heading.
-- **Food bar** and **Stored buffer** — how full your reserve is right now, against its cap.
+- **Food bar** and **Stored buffer** — how full your reserve is right now, against its **cap**. That cap tracks the food your *next* citizen will cost, so it climbs as your settlement grows; researching **Food Preservation** adds overflow room on top (see [Cooking & Food](../antiquity/cooking-and-food.md)).
 - **Stored food value** — how much edible food is sitting in your claimed storage.
 - **~N days left** — how long the reserve lasts at the current drain. While you are comfortably ahead it reads **Self-sufficient** instead of a countdown.
 
@@ -47,18 +47,31 @@ The instant your settlement grows up — the moment you enact a [government](gov
 
 Once eating begins, it is a **steady per-second drain that scales with your population**. Every mouth eats the same modest amount each day, so ten citizens burn through food roughly twice as fast as five. This is why growth and food are locked together: every newcomer you welcome is another appetite you have promised to feed, forever.
 
-The Food tooltip spells out the arithmetic:
+The Food tooltip never shows all of this at once. It has **two different faces** depending on whether your settlement has enacted a government yet:
 
-> **Net food/s = stored valid food income + pioneering spirit − eaten by citizens**
+=== "Before a government (pioneering)"
 
-- **Stored valid food** is the passive income from food sitting in your claimed storage (see below).
-- **Pioneering spirit** is a small founding trickle — *"founding settlers forage to grow the camp."* It helps a young settlement grow before real food industry exists, and matters most in the earliest hours.
-- **Eaten by citizens** is that population-scaled appetite, shown as a negative.
+    While you're still in the founding scramble, nobody eats, so the tooltip only ever counts *gains*:
+
+    - **Pioneering spirit** — a small founding trickle, *"founding settlers forage to grow the camp."* It helps a young settlement grow before a real food industry exists, and matters most in the earliest hours.
+    - **Stored valid food** — the passive income from food sitting in your claimed storage (see below), shown only once you actually have some.
+
+    There is no "eaten by citizens" line here — nothing is draining the reserve yet.
+
+=== "After a government (citizens eating)"
+
+    The moment you enact a government the pioneering trickle disappears and appetite switches on. The tooltip now reads:
+
+    - **Net food/s** — the single number that matters, positive or negative.
+    - **Stored valid food** — your passive stored-food income (see below).
+    - **Eaten by citizens** — that population-scaled appetite, shown as a negative.
+
+    Below these it shows either a **days-left** runway (while you're in the red) or **Self-sufficient** (when income covers the drain).
 
 Keep the net number at or above zero and you are secure. Let it go red and the days-left counter starts ticking down.
 
-!!! info "Blessings add to the larder"
-    Some [faith](faith.md) blessings and banner effects list a "food/s" bonus. These add a small, steady trickle of food per second on top of your stored income — one more figure on the plus side of the net line that helps keep you in the black without lifting a hoe.
+!!! info "Blessings ease the appetite"
+    Some [faith](faith.md) blessings and banner effects list a "food/s" bonus. Rather than adding a separate "+food/s" line, these quietly **slow how fast your citizens eat** — they shrink the drain, so your net food number simply improves without you lifting a hoe. (Before you enact a government, when nobody's eating yet, the same bonus rolls into your pioneering trickle instead.)
 
 ## Stored food: your living larder
 

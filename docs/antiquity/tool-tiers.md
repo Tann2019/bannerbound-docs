@@ -59,20 +59,20 @@ Your scavenger's toolkit. Assemble **bone** blades and sticks on a **Crafting St
 
 | Bone tool | What it's for | Made from |
 | --- | --- | --- |
-| **Bone Pickaxe** | Mining soft stone and ore | 3 Bone Blades + 2 sticks + plant fiber |
+| **Bone Pickaxe** | Mining the stone family — ore blocks break but **drop nothing** | 3 Bone Blades + 2 sticks + plant fiber |
 | **Bone Axe** | Chopping wood | Bone Blades + sticks + fiber |
 | **Bone Shovel** | Digging dirt, sand, gravel | Bone Blades + sticks + fiber |
 | **Bone Hoe** | Tilling for farms | Bone Blades + sticks + fiber |
 | **Bone Sword** | Your first real weapon | Bone Blades + sticks + fiber |
 | **Bone Knife** | Cutting plants, carving benches (durable) | Bone Blade + stick + fiber |
-| **Bone Club** | A blunt starter weapon | Bone parts |
+| **Bone Club** | A blunt starter weapon — a **critical hit stuns** | Bone parts |
 | **Bone Shears** | Shearing wool and leaves | Bone parts |
 | **Bone Spear** | Thrown or thrust — hunting and defence | Bone parts |
 
 Alongside these live the true first edges — the disposable **Flint Blade** and **Bone Blade** you knap straight off a stone surface, and the durable **Flint Knife** you assemble in your inventory grid. The [knapping](knapping.md) page covers those in full; here it's enough to know they're the seed the whole tier grows from.
 
 !!! tip "Bone is a spring, not a home"
-    Bone tools exist to get you off the ground and to the point where you can research your way upward. They're slow and they wear fast. The moment **Knapping** is within reach, take it.
+    Bone tools exist to get you off the ground and to the point where you can research your way upward. They're slow, they wear fast, and a bone pickaxe pulls **no ore at all** from the rock — not even coal or copper, only the plain stone family. Any ore block still *breaks*, it just leaves nothing behind. Real ore-mining begins at the **Stone Age**, so the moment **Knapping** is within reach, take it.
 
 ### <span class="bb-tier stone">Stone</span> Stone tools
 
@@ -145,6 +145,9 @@ The tier changes, but the *jobs* the tools do stay constant across the whole lad
 | **Spear** | Thrown or thrust; hunting, fishing, defence | Knapped point or cast point | Yes — hafted at the Crafting Stone |
 | **Arrows** | Ammunition for bows | Cast arrowhead | Fletched at the Fletching Station |
 
+!!! tip "Blunt weapons stun on a crit"
+    The **Bone Club** and every **smithing hammer** (stone, copper, tin, and bronze) count as *blunt* weapons. Land a **critical hit** with one and the target is **stunned for one second** — its movement is halved, and a struck player's vision blurs for the moment. That stagger is the quiet reason to keep a club or hammer in hand: a hammer earns its keep away from the anvil, and a club can buy you the opening a sharper blade can't.
+
 ## Special tools
 
 A handful of tools aren't about mining and fighting — they're the keys that unlock whole crafts. Keep these on hand:
@@ -155,7 +158,7 @@ A handful of tools aren't about mining and fighting — they're the keys that un
 
 === ":material-tongs: Tongs"
 
-    A freshly-melted crucible is a glowing, roughly 1000 °C clay pot — carry it bare-handed and it sets you alight and burns you each second. Hold **tongs in your off-hand** and the heat pours into the tongs' durability instead of your health. They come in four grades: **Wooden Tongs** char out fast (the desperate pre-metal stopgap that lets you lift your very first melt), while cast **Tin**, **Copper**, and **Bronze Tongs** last far longer. Tongs are not a weapon or a digging tool — they simply let you move molten metal safely.
+    A freshly-melted crucible is a glowing, roughly 1000 °C clay pot — carry it bare-handed and it sets you alight and burns you each second. Hold **tongs in your off-hand** and the heat pours into the tongs' durability instead of your health. They come in four grades: **Wooden Tongs** char out fast (the desperate pre-metal stopgap that lets you lift your very first melt), while cast **Tin**, **Copper**, and **Bronze Tongs** last far longer. Tongs are not a weapon or a digging tool — they simply let you move molten metal safely. The full melt, pour, and carry sequence — and exactly where a bare-handed slip sets you alight — is laid out on the [Metalworking](metalworking.md) page.
 
 === ":material-chisel: Stone Chisel"
 
@@ -189,6 +192,9 @@ Higher tiers don't just look better — they **work faster and hit harder**. As 
 | **Iron** | Fastest | Fastest | Fastest | 6.0 |
 
 Attack **speed** stays the same across every tier — it's the damage per swing that climbs. On top of the tier, **forge quality** (Crude → Standard → Fine → Masterwork) stacks its own bonus to durability and effectiveness, so a Masterwork copper tool can rival a rushed bronze one. It's always worth taking the extra care at the anvil.
+
+!!! note "Bone is the exception: it gets no ore"
+    Bone's "Slowest" reading in the **Mining** column is for the stone family only — bone tools pull **no drops from any ore**, not even coal or copper (the block breaks but drops nothing). Ore mining that actually yields its drops starts at the **Stone Age**, so bone → stone is the real gate on bringing metal home from the rock, not merely a speed bump.
 
 ## Where to next
 

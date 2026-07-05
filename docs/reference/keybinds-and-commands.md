@@ -46,10 +46,13 @@ When you draw a god into the sky, you enter **Pantheon Mode** — a special star
 
 ## Commands
 
-Every command below is rooted at `/bannerbound`. Most are gated to **operators** (permission level 2): in single-player you'll need **Allow Cheats** enabled, and on a server you must be op. A handful, listed first, need no cheats at all.
+Almost every command below is rooted at `/bannerbound` — the one exception, the operator `/settle` shortcut, is noted at the end. Most are gated to **operators** (permission level 2): in single-player you'll need **Allow Cheats** enabled, and on a server you must be op. A handful, listed first, need no cheats at all.
 
 !!! danger "The admin commands override normal progression"
     Setting an era, forcing research, or resetting faith skips the systems that would normally earn those things. They're perfect for testing and troubleshooting — and a fast way to spoil a survival playthrough. Prefer them on test worlds.
+
+!!! note "Looking for game rules?"
+    Bannerbound's custom `/gamerule` toggles — proximity chat (`globalChat`), offline war (`allowOfflineWar`), the invented-language UI (`useCustomLanguage`), meteor showers (`meteorAmount`), and more — live in the **Game Rules** section of [Multiplayer & server settings](multiplayer.md#game-rules). This page covers the keybinds and the `/bannerbound` command tree.
 
 ### Player commands
 
@@ -72,16 +75,16 @@ These carry no permission gate — any player can run them.
 
 The valid era names are:
 
-`antiquity` · `medieval` · `renaissance` · `industrial` · `diesel` · `atomic` · `modern` · `future`
+`ancient` · `classical` · `medieval` · `renaissance` · `industrial` · `diesel` · `atomic` · `modern` · `future`
 
-!!! example "Locking a world to the Bronze Age"
-    Want a server that never leaves the [Antiquity](../antiquity/index.md) content?
+!!! example "Locking a world to the earliest era"
+    Want a server that never advances past the earliest, stone-age [Antiquity](../antiquity/index.md) content?
 
     ```
-    /bannerbound force_max_age antiquity
+    /bannerbound force_max_age ancient
     ```
 
-    The game confirms the cap, and any research that would push a settlement past Antiquity simply won't complete. Later, lift it with `/bannerbound force_max_age none` — you'll see *"Era cap cleared — civilizations may advance freely."*
+    The game confirms the cap, and any research that would push a settlement past the **ancient** era simply won't complete. Later, lift it with `/bannerbound force_max_age none` — you'll see *"Era cap cleared — civilizations may advance freely."*
 
 ### Research
 
@@ -131,6 +134,14 @@ The `/bannerbound` tree also carries a set of deeper testing tools. Tab-completi
     | `/bannerbound <settlement\|all> set_population <value>` | Sets the settlement's population. |
     | `/bannerbound <settlement\|all> add_population <value>` | Adjusts population up or down. |
 
+???+ note "Resetting Rod selections & the founding shortcut"
+    Two more operator tools that don't fit the rate-tuning table above:
+
+    | Command | What it does |
+    | --- | --- |
+    | `/bannerbound clear_rod_selection <settlement\|all>` | Wipes the [Foreman's Rod](../civilization/jobs-and-labor.md) work selections for a settlement — pass a name, or `all` to clear every settlement at once. Handy for resetting a stuck or broken selection. |
+    | `/settle` | The one command **not** rooted at `/bannerbound`. Opens the settlement-founding screen directly, bypassing the campfire — a fast way to test founding a [settlement](../civilization/settlements.md). Op-only, and it still refuses if you already lead a settlement or the server is at its faction cap. |
+
 ??? info "Other command families (testing & debug)"
     Discoverable through tab-completion, these are unstable dev tools meant for testing edge cases, not for normal play — expect them to change:
 
@@ -147,4 +158,5 @@ The `/bannerbound` tree also carries a set of deeper testing tools. Tab-completi
 - [The Chronicle & Ponder](codex-and-ponder.md) — the guidebook the ++j++ key opens, and how it fills in.
 - [Faith](../civilization/faith.md) — draw constellations into gods using the Pantheon Mode controls above.
 - [Research & Eras](../civilization/research-and-eras.md) — how eras and research advance without commands.
+- [Multiplayer & server settings](multiplayer.md) — the custom `/gamerule` toggles referenced above, and how servers tune Bannerbound.
 - [Glossary](glossary.md) — quick definitions for the terms above.

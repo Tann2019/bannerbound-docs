@@ -79,7 +79,10 @@ Above individual nodes sits your settlement's **era** — the broad epoch it bel
 | 8 | **Modern Era** | 1990 |
 | 9 | **Future Era** | 2100 |
 
-You begin in the **Ancient Era**. Advancing is itself a research payoff: completing **Bronze Age** carries you into the Classical Era (*"… has advanced to the Classical Era!"*), and completing **Iron Working** carries you into the Medieval Era. Each later era is reached the same way — by finishing the keystone research that unlocks it.
+You begin in the **Ancient Era**. Advancing is itself a research payoff: completing **Bronze Age** carries you into the Classical Era (*"… has advanced to the Classical Era!"*), and completing **Iron Working** carries you into the Medieval Era. Those two keystones are the whole of the research-driven climb today: **Iron Working → Medieval is the furthest the tech tree can carry you on its own.**
+
+!!! warning "Eras beyond Medieval aren't in the tree yet"
+    The six later eras — Renaissance, Industrial, Diesel, Atomic, Modern, and Future — are already written into the world's timeline, but **no research node advances you into them.** For now they live only as dates on the calendar; a world reaches them only if an operator sets the era by hand with the `/bannerbound set_age` command. Don't plan a tech path around a Renaissance keystone — there isn't one. See [Keybinds & Commands](../reference/keybinds-and-commands.md).
 
 Advancing an era does two big things:
 
@@ -118,7 +121,7 @@ Each worker's job tab shows the tool slot it needs; drop a valid tool in, or mar
 
 A completed node can hand you far more than a new block:
 
-- **Jobs.** Most early research opens a new worker role — Woodworking gives the Carpenter and Forester, Masonry the Mason, Storage Logistics the Stocker, Town Watch the Guard, Ore Mining the Miner, and so on down the list of foragers, hunters, fishers, and fletchers.
+- **Jobs.** Most early research opens a new worker role — Woodworking gives the Carpenter and Forester, Masonry the Mason, Storage Logistics the Stocker, Town Watch the Guard, Ore Mining the Miner, Agricultural Revolution the Farmer, Stews the Cook, and so on down the list of foragers, hunters, fishers, and fletchers.
 - **Crafts & workstations.** Nodes unlock the benches that anchor a craft: the Woodworking Table, the Mason's Bench, the Fletching Station, and the bellows, casting molds, and stone anvil of Metal Working.
 - **Storage.** Baskets, the shared Stockpile, and larger storage all wait on research — try to use one too soon and you'll hear *"Your settlement hasn't researched that storage type yet."*
 - **Policies.** Certain researches add no item at all — they unlock a **policy** the Chief can enact in the town hall (*"Research unlocks policies."*). Confirmed doctrines include **Roads**, **Extended Shift**, **Workload Share**, **Opinionated Crowd**, **Domestication**, **Agricultural Effort**, **Rallying Speeches**, and **Glory Tales**. See [Government](government.md).
@@ -138,6 +141,12 @@ Here is a representative slice of the Ancient-to-Medieval Science tree — the n
 | **Storage Logistics** | Ancient | 12 | The Stocker, the Basket, and the shared **Stockpile** |
 | **Animal Husbandry** | Ancient | 12 | Breeding and leashing; fences, wool, leather, and eggs |
 | **[Herbalism](../antiquity/herbalism.md)** | Ancient | 12 | Poisons, antidotes, darts, the blowgun, and the mortar & pestle |
+| **Housing** | Ancient | 24 | The first true [homes](housing.md) — thatch beds and doors, and the housing planner |
+| **Agricultural Revolution** | Ancient | 20 | The **Farmer** and crop planting — potatoes, carrots, beetroot, and foresters that replant what they fell |
+| **Food Preservation** | Ancient | 16 | Salt and dried meats & fish; adds to your [food](food.md) reserve — see [Cooking & Food](../antiquity/cooking-and-food.md) |
+| **Fertilization** | Ancient | 24 | Composter, bone meal, and the manure → dung loop — fed soil that harvests faster |
+| **Stews** | Ancient | 5 | The **Cook** and the stone cooking pot — the settlement's first proper meals |
+| **Domestic Comfort** | Ancient | 28 | Homes begin asking for light, storage, and a hearth — comforts that draw families |
 | **Bartering** | Ancient | 14 | Trade with other settlements via the [Diplomacy](diplomacy.md) tab |
 | **[Fletching](../antiquity/fletching-and-archery.md)** | Ancient | 16 | The Fletcher; the Fletching Station and slingshot (bows wait on Archery) |
 | **Paving** | Ancient | 24 | Flatten dirt and grass into paths — groundwork the Roads policy later builds on |

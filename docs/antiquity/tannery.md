@@ -38,14 +38,14 @@ Hides come from two places:
 
 Every hide is stamped with a **Hide Quality**, and that grade follows it all the way to the finished leather.
 
-| Quality | What it means |
-| --- | --- |
-| **Poor** | A rough, damaged hide. You always get *something*, but it scrapes down to little. |
-| **Standard** | A serviceable hide — the everyday result. |
-| **Great** | A clean, prime hide. Scrapes down to the most leather. |
+| Quality | Scraped hide | What it means |
+| --- | --- | --- |
+| **Poor** | 1 | A rough, damaged hide. You always get *something*, but it scrapes down to little. |
+| **Standard** | 2 | A serviceable hide — the everyday result. |
+| **Great** | 3 | A clean, prime hide. Scrapes down to the most leather. |
 
 !!! info "Quality carries through"
-    Better hide quality doesn't change the *steps* — it changes the *yield*. A Great hide scraped by hand gives you more scraped hide (and so more leather) than a Poor one. Good hunting and good husbandry quite literally pay off at the rack.
+    Better hide quality doesn't change the *steps* — it changes the *yield*. A Great hide scraped by hand yields **three** scraped hide to a Poor one's **one** — literally 3× the leather from the same animal. Good hunting and good husbandry quite literally pay off at the rack.
 
 ### How Hide Quality is decided
 
@@ -78,6 +78,8 @@ Quality is set at the moment the animal dies, and the two acquisition paths judg
 
 !!! tip "Aim your hunts"
     If you're out hunting specifically for leather, carry the *right* tool for the game you expect. A **spear** for cattle and horses, a **blade** for pigs, the **bone club** for sheep, and a **bow** for goats will turn ordinary kills into Great hides — and Great hides mean more leather per animal.
+
+    The **bone club** earns its keep in a fight, too: like the **smithing hammers** cast at the [forge](metalworking.md), it's a **blunt weapon**, so a *critical hit* staggers the target for a second — halving its movement (and blurring the vision of a struck player). Handy for pinning a bolting animal, or a raider.
 
 ---
 

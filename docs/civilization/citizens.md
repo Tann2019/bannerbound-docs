@@ -166,6 +166,9 @@ Happiness is how a citizen *feels*. **Compliance** is whether they'll *listen*. 
 
 New arrivals show up eager and fully compliant. But **living in misery erodes compliance**, and there is a second, sharper channel: **resentment** toward whoever leads them. A citizen left unhappy under a leader starts to blame that leader personally — and the two feed each other.
 
+!!! warning "Raising a hand against your own people backfires"
+    Resentment isn't only earned by neglect — **violence is the fastest way of all to earn it**. Every time you strike a citizen, their resentment toward you climbs by **10** (this holds even for a leader "disciplining" their own people — hitting a citizen is a social act, not the world hurting them). Worse, **killing** a citizen scars the whole settlement: every other citizen gains **40** resentment toward the killer — enough, from a single death, to shove witnesses past the point where compliance starts to crumble. Culling or "managing" citizens by hand is a direct march toward strikes and coups.
+
 !!! danger "Homelessness is the classic trigger"
     A citizen with no home doesn't just sit at a mild penalty. Their grievance **deepens each day**, and the game will warn you plainly:
 
@@ -180,7 +183,9 @@ Unrest escalates in stages, and dusk is when it comes to a head. As night falls 
 > *"As night falls, unrest stirs in the settlement:"*
 
 - **Strikes.** *"2 worker(s) are unhappy enough to refuse work tomorrow."* The next day those citizens show **On strike today** / **Refusing to work** and simply won't do their jobs — no amount of assigning fixes it until the mood recovers. Low-compliance workers may also flatly **refuse a job switch** when you ask.
-- **Coups.** If unrest runs deep enough: *"The people may rise against the Chief at dawn!"* Come dawn, they act — *"The citizens have lost faith in [chief]. They will choose a new leader."* — and depose your leader: *"The citizens have deposed [chief]. [name] now leads."*
+- **Coups.** When more than **45% of a Chiefdom's citizens** carry deep **resentment** toward the Chief, you'll see *"The people may rise against the Chief at dawn!"* What actually happens at dawn depends on how many players are online:
+    - **With two or more players online**, the people act — *"The citizens have lost faith in [chief]. They will choose a new leader."* — and hold a vote that hands the seat to another member: *"The citizens have deposed [chief]. [name] now leads."*
+    - **Solo, or with only one player online**, there is nobody to elect in your place, so the coup is **suppressed**: you keep your seat, but the anger doesn't just evaporate — **compliance now decays twice as fast**, so strikes and flat refusals pile up sharply until you turn the mood around. The dusk warning still fires either way, so a lone Chief will read the "may rise against the Chief" banner even though no rival ever takes the throne.
 
 The remedy is the same at every stage: **fix the underlying misery** — food, homes, jobs, safety — and give it a day or two. A settlement that feels heard forgives quickly; content citizens shed old grudges fast. Your form of [government](government.md) shapes how forgiving (or fragile) that balance is.
 
@@ -191,9 +196,21 @@ The remedy is the same at every stage: **fix the underlying misery** — food, h
 
 ## Children and growing up
 
-A settlement grows its own people. When a pair of citizens are well-fed and housed, they may start a family — and every new mouth makes food planning matter more.
+A settlement grows its own people. Given the right conditions, two citizens will start a family on their own — and every new mouth makes food planning matter more.
 
-- **Expecting.** A pregnant citizen shows **Pregnant** on their screen and **Expecting — not working** as their status. Expecting parents step back from labour, so plan for the temporary dip in hands.
+**A child begins overnight, and it takes a real couple to make one.** For a pregnancy to catch, an **adult man and adult woman who share the same [home](housing.md)** must both be **asleep in it at night**, and they can't be **family**. Given that, the game rolls their chance once per night, set by how close the two are:
+
+| Their relationship | Chance each shared night |
+| --- | --- |
+| **Strangers** | None on their own |
+| **Acquaintances** | ~15% |
+| **Friends** | ~30% |
+| **Close Friends** | ~65% |
+| **Friends for Life** | ~100% |
+
+The **[home's own Happiness](housing.md)** then nudges every one of those odds up or down. A delightful home can lift even near-strangers over the line and let them conceive; a miserable or overcrowded one drags the chance toward nothing and can stop births outright. So the surest way to grow your own population is warm homes shared by citizens who already like each other — the relationship [ladder below](#relationships-friends-arguments-and-grief) is what your breeding rate rides on.
+
+- **Expecting.** A pregnant citizen shows **Pregnant** on their screen and **Expecting — not working** as their status. The **Info** tab adds a pink "how far along" bar that fills over the pregnancy's roughly **one in-game day** course, and a small marker appears beside her name tag — so you can spot an expecting mother at a glance and plan for the temporary dip in hands.
 - **Birth.** A new arrival is announced to everyone — *"[parent] gave birth to [child]!"* — and lifts spirits settlement-wide, with an especially big glow for the proud parents.
 - **Childhood.** Children can't do a job. They wander, explore, and think small curious thoughts — *"I saw a bird!"*, *"I found a really cool pebble."*, *"Mom said not to stray far. But my curiosity is killing me!"* — each a little lift to those around them. **You cannot assign a child to a workstation**; the option is simply unavailable until they grow.
 - **Growing up.** After roughly **three in-game days**, a child comes of age — *"[name] has grown up."* — and becomes a full adult who can hold a job, take a home, and eventually raise a family of their own.
@@ -205,7 +222,7 @@ A settlement grows its own people. When a pair of citizens are well-fed and hous
 
 ## Relationships: friends, arguments, and grief
 
-Citizens form real bonds. At dusk they gather to **socialise** (you'll see the status **Socializing (dusk)**), and those conversations move relationships up or down. A good talk leaves both parties happier — *"Had a great conversation with …"* — while a clash leaves an **argument** or, worse, a **fight**. The **Relations** tab lists who a citizen knows and how they feel about each one.
+Citizens form real bonds. At dusk they gather to **socialise** (you'll see the status **Socializing (dusk)**), and those conversations move relationships up or down. As they talk, a small **speech bubble** hovers over each one showing what's on their mind — a culture, food, or science glyph, a mood face, or their job's workstation icon — an at-a-glance read on what your settlement is chatting and feeling about during the social hour. A good talk leaves both parties happier — *"Had a great conversation with …"* — while a clash leaves an **argument** or, worse, a **fight**. The **Relations** tab lists who a citizen knows and how they feel about each one.
 
 Relationships climb a ladder of tiers as bonds deepen:
 

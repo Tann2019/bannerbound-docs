@@ -21,6 +21,9 @@ A crisis is not a punishment. It exists to make an important system *impossible 
 
 Each crisis is written into the **Chronicle**, your in-game guidebook. The Chronicle holds the permanent knowledge; while a crisis is live, the **side objective tracker** on your screen holds the running task list for the path you chose.
 
+!!! note "One at a time, and only once"
+    A settlement faces **one crisis at a time** — a new one can't fire while another still waits for an answer. And each named crisis fires **only once**: settle Starvation and it won't return, even though citizens can still go hungry later through ordinary [food](food.md) shortfalls. "Preventing the next one" always means a *different* crisis, never a repeat of one you've already resolved.
+
 ## Crises you may face
 
 These are the emergencies defined for the early game. Both wait until you have a [government](government.md) — a wandering band with no leader has no one to answer them.
@@ -28,7 +31,7 @@ These are the emergencies defined for the early game. Both wait until you have a
 | Crisis | What sets it off | How you answer it |
 | --- | --- | --- |
 | **Starvation** | Fires right after you enact your first government, when the old wandering stores can no longer feed the tribe. | Stand up steady food — pick **Fishers**, **Farmers & Fields**, or **Herders & Husbandry**. |
-| **A Roof Over Their Heads** | Builds when several citizens sleep in the open for too long. | Research **Housing** and raise a proper home for every citizen. |
+| **A Roof Over Their Heads** | Fires once **4 citizens** are homeless and stay that way for about **5 minutes** running. | Research **Housing** and raise a proper home for every citizen. |
 
 Both leave your settlement permanently better off: a food engine, or homes for all. Each is walked through in full below.
 
@@ -39,6 +42,8 @@ When the conditions for a crisis are met, three things happen at once:
 - A **Crisis: _<name>_** notification announces it to the settlement.
 - A dramatic full-screen **decision** opens — a headline, a plea from your people, and a short list of choices, each with its own consequences.
 - Until a decision is made, the settlement is marked **"Waiting for the decision."** Life does not simply carry on as if nothing is wrong.
+
+Closed the popup without answering? You haven't missed your chance. For as long as a choice is pending, a floating **alert marker** hovers over your **Town Hall** for everyone nearby to see, and **right-clicking the Town Hall reopens the decision screen** in place of the usual menu — so a member who logged in partway through the crisis, or anyone who dismissed the popup, knows exactly where to go to answer.
 
 The decision screen lays out every option with a description of what it commits you to. Some options also show a **viability warning** when your settlement can't support that path yet — for example, *"No claimed pond or shore looks fishable yet"* or *"No tillable dirt or grass is claimed."* You can still pick a warned path, but you'll have work to do before it can succeed.
 
@@ -83,7 +88,7 @@ Whichever path you choose, the fix is the same shape. Get these four right and t
 
 - [ ] **Assign the job.** Open a citizen's **Job** tab and assign the gatherer the path calls for — Spear Fisher, Farmer, or Herder. Aim for at least two workers on it.
 - [ ] **Set the work area.** Give the job somewhere to work. Bind a field or a fenced pen with the **Foreman's Rod**; for fishers, claim a good stretch of fishable water. Without a work area, a gatherer has nowhere to gather.
-- [ ] **Provide the tool.** Put the right tool where the worker can reach it — a spear for fishers, a hoe for farmers — in their tool slot or your shared tool storage. (A spear fisher will wade in bare-handed, but a spear makes them far faster.)
+- [ ] **Provide the tool.** Put the right tool where the worker can reach it — a spear for fishers, a hoe for farmers, [**fiber rope**](jobs-and-labor.md) for herders — in their tool slot or your shared tool storage. (A spear fisher will wade in bare-handed, but a spear makes them far faster; the herder objective, though, counts *only* herders actually holding their rope.)
 - [ ] **Keep storage in claimed chunks.** Your **baskets** and other containers must sit inside your **claimed [territory](territory.md)**. Food delivered to claimed storage counts toward the crisis; food dropped outside your claim does not.
 
 Each path also begins with a bit of [research](research-and-eras.md) from the **Town Hall** research screen before the job is available:
@@ -120,7 +125,7 @@ Each path also begins with a bit of [research](research-and-eras.md) from the **
     *"We'll feed through the animals."* Pens, breeding stock, and patience turn wandering beasts into a living reserve.
 
     1. Research **Herding** and then **Animal Husbandry** at the Town Hall.
-    2. Assign two **Herders** in a citizen's Job tab.
+    2. Assign two **Herders** in a citizen's Job tab, and hand each one **fiber rope** — the "appoint 2 herders" objective only counts herders holding their rope.
     3. Fence a pen, bind it with the **Foreman's Rod**, and keep breeding stock inside.
     4. Cull surplus animals into baskets kept in claimed chunks.
 
@@ -138,7 +143,7 @@ Your chosen path leads the way, but **every food worker counts** toward that rat
 
 ## Worked example: the Housing crisis
 
-The second emergency you're likely to meet is **A Roof Over Their Heads**, which builds when too many citizens sleep on bare ground for too long. The plea is pointed: *"The people demand homes!"* A person with no door of their own feels they belong to no one — and they won't labor willingly much longer without shelter.
+The second emergency you're likely to meet is **A Roof Over Their Heads**, which fires once **four citizens** are left homeless and stay that way for roughly **five minutes** running. The plea is pointed: *"The people demand homes!"* A person with no door of their own feels they belong to no one — and they won't labor willingly much longer without shelter.
 
 This crisis has a single path: **build**. Resolving it means unlocking the craft of building and putting a roof over every head.
 

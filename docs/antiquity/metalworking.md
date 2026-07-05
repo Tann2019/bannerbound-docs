@@ -86,6 +86,9 @@ Casting needs *liquid* metal, and the vessel that holds it is the **Crucible**. 
 
 A charged crucible is still just cold ore in a cup. To melt it, **place the crucible inside a lit Bloomery** and hold the heat in the working band until the whole charge goes liquid. The Bloomery's readout switches to show the molten metal and how many mB you have. Now it's a **molten crucible** — pick it up and carry it, glowing, to the anvil.
 
+!!! danger "A molten crucible will set you on fire — carry it with Tongs"
+    A freshly-melted crucible is a **~1000 °C** clay pot. Carry one **bare-handed** and it sets you alight (**ignites for ~3 seconds**) and burns you for **3 damage every second** you hold it. Hold a pair of **Tongs** in your *off-hand* and the heat sinks into the tongs' durability instead of your health. There are four grades, tougher as you climb the tiers — **wooden** (durability 48), **tin** (128), **copper** (192), and **bronze** (384), each point roughly a second of carrying. The green-wood pair is a disposable stopgap for lifting your very first melt. See [Tool Tiers](tool-tiers.md).
+
 !!! warning "Molten metal cools"
     A crucible left sitting too long will cool and set back toward solid. If it goes cold, just **reheat it in a Bloomery** — no metal is lost, but you can't pour a crucible that has gone hard.
 

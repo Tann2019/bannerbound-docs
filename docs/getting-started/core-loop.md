@@ -42,12 +42,17 @@ You will also find **Walls** and **Statistics** here as your settlement matures.
 
 ### The Foreman's Rod (your pointer)
 
-The town hall menus decide *what*. The **Foreman's Rod** decides *where*. It is the tool you hold to mark worker areas out in the world — **mines, fields, pens, quarries, guard posts, and other managed work sites**. Point it, click two corners or a block, and your citizens go to work on exactly that spot.
+The town hall menus decide *what*. The **Foreman's Rod** decides *where*. It is the tool you hold to mark worker areas out in the world — **mines, fields, pens, quarries, guard posts, and other managed work sites**. Point it, click two corners or a block, and your citizens go to work on exactly that spot. You craft the Rod early on a **Crafting Stone** from one stick and one plant fiber, then keep it in your inventory ([Jobs & Labor](../civilization/jobs-and-labor.md) has the full recipe).
 
 Want a farm? Assign a Farmer in the Labor menu, then take the Rod out and mark the field. Want that ore vein worked? Mark the deposit with the Rod and a Miner claims it. The pattern is always the same: **assign the job at the town hall, then place the work with the Rod.**
 
+!!! warning "First, leave anarchy behind"
+    That assign-then-mark pattern only works once you have a government. Right after founding, your settlement is in **anarchy**: your citizens self-organize into the basic **gatherer** jobs on their own, keeping the tribe fed, but they **won't obey direct job assignments** yet. To *pin* a specific citizen to a job — and then place their work with the Rod — you first **enact a code of laws** and choose a government: a **Chiefdom** (one leader; the only choice in a solo game) or a **Council** (for multiple players). Until you do, you can steer where gatherers drop their goods, but nothing more.
+
+    [:material-arrow-right: Government](../civilization/government.md)
+
 !!! warning "A job with no marked site sits idle"
-    Assigning a citizen to a gatherer job is only half the order. If a Farmer has no field marked, a Herder has no pen, or a Digger has no area, they will stand around with nothing to do. If a worker looks idle, the fix is usually a click of the Foreman's Rod — or a missing tool or drop-off chest.
+    Assigning a citizen to a gatherer job is only half the order. If a Farmer has no field marked, a Herder has no pen, or a Digger has no area, they will stand around with nothing to do. If a worker looks idle, the fix is usually a click of the Foreman's Rod — or a missing tool or [drop-off](../civilization/jobs-and-labor.md) to deposit into. Early on that drop-off is a **basket** — plain chests are gated behind later research, so don't wait on one.
 
 ## The five pillars of the loop
 

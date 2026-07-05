@@ -9,7 +9,7 @@ description: Cook hearty stews and preserve your harvest with salt and drying ra
 
 !!! abstract "The short of it"
     - Fresh food slowly turns **Bland** (worth half as much), then rots into worthless **Spoiled Food**.
-    - **Salt** a perishable to make it keep about **25% longer**; a **Drying Rack** turns meat and fish into dried rations that *never* spoil.
+    - **Salt** a perishable to make it keep about **twice as long** (roughly +100%); a **Drying Rack** turns meat and fish into dried rations that *never* spoil.
     - A **Stone Cooking Pot** over a lit campfire boils raw food into a **Stew** — a big, rot-proof pile of stored food that fights starvation better than anything else this age.
     - Only *good* food counts. Spoiled or poisoned food adds **nothing** to your settlement's [food supply](../civilization/food.md).
 
@@ -112,7 +112,7 @@ Food Preservation is an Ancient-era study on the [research tree](../civilization
 
 ### Salting food
 
-**Salt** rubs into a fresh or bland food and slows its rot, so it keeps about **25% longer**.
+**Salt** rubs into a fresh or bland food and slows its rot, so it keeps about **twice as long** — roughly **+100%** to its shelf life.
 
 To salt:
 
@@ -156,7 +156,7 @@ Using a rack is simple:
 
 === "Salt it"
 
-    **Best for a quick save.** Cheap and fast, and it stretches any perishable's shelf life by about a quarter. Ideal for food you'll eat soon but not *right* now.
+    **Best for a quick save.** Cheap and fast, and it roughly **doubles** any perishable's shelf life. Ideal for food you'll eat soon but not *right* now.
 
 === "Dry it"
 

@@ -74,12 +74,15 @@ The two simplest types — **General Crafts** and **Fletchery** — are the ones
 
 A marked, valid workshop still produces nothing until someone works it. Two [jobs](jobs-and-labor.md) make production flow:
 
-**The Crafter** stands at the work block and actually makes things. Open the workshop's **Workers** tab, pick an available [citizen](citizens.md) from the list, and **Assign**. From then on the crafter pulls ingredients from the workshop's storage and fulfills its orders without stopping to rest at the station — and **gains skill** every time they craft. The menu shows how many workers the workshop holds (*Workers: 1 / 2*) and its **Appeal**; a pleasant, well-built workshop keeps its crafters happy. (*"I love working in such a lovely workshop."*)
+**The Crafter** stands at the work block and actually makes things. Open the workshop's **Workers** tab, pick an available [citizen](citizens.md) from the list, and **Assign**. From then on the crafter pulls ingredients from the workshop's storage and fulfills its orders without stopping to rest at the station — and **gains skill** every time they craft. The menu shows how many workers the workshop holds (*Workers: 1 / 2*) and its **Appeal**; a pleasant, well-built workshop doesn't just keep its crafters happy (*"I love working in such a lovely workshop."*) — happier workers also **learn their craft faster**, so decorating a production building buys you skill, not just mood.
 
 **The Stocker** never touches a station — they're your hauler. A stocker carries ingredients *to* workshops that need them and moves finished goods *between* stores. When a workshop's order is short an ingredient, it's the stocker who fetches it. Without at least one stocker, your crafters will sit idle waiting on materials that never arrive.
 
 !!! tip "The unsung stocker"
     New players staff crafters and forget haulers — then wonder why the smithy is "waiting on inputs." A workshop with a blocked order is skipped until its materials show up, and *something has to bring them*. Keep a stocker or two on the [labor board](jobs-and-labor.md) as your settlement grows.
+
+!!! note "Pinning a worker to one station"
+    If a workshop holds **more than one kind of station**, each worker's row on the **Workers** tab grows a small station toggle — a station's name, or **Any**. Pin a crafter to a single station and their experience piles up in that one craft instead of smearing across whichever bench happens to be free. A single-station workshop has nothing to choose, so the toggle never appears.
 
 ### Skill and how crafters grow
 
@@ -123,10 +126,13 @@ A couple of crafts have their own structural demands worth remembering: a **[Pot
 
 Open a workshop and switch to the **Stock** tab to tell it *what* to produce. Each craftable **output** gets two numbers:
 
-- **Min** — the standing stock level to keep on hand. The workshop quietly tops this up whenever supplies run low. This is your "always have some" dial.
+- **Min** — the standing stock level to keep on hand, counted **settlement-wide**. The workshop only tops up when that item's *total across every container in your territory* — stockpiles, other workshops, even loose chests, barrels, and baskets — drops below the Min. Quality doesn't enter into it: eight *crude* arrows satisfy a Min of eight arrows. This is your "always have some" dial.
 - **Orders** — a one-off batch you want *now*. Orders run first-in, first-out and **outrank Min production** — a placed order is crafted before the workshop goes back to maintaining its minimums.
 
 Click the numbers to nudge them; **shift-click** jumps them in steps of eight for setting big batches fast. A blocked order (one that's short an ingredient) is skipped until its materials arrive, then picked back up — so it's safe to queue ambitious orders and let the stockers catch up.
+
+!!! note "The gray *+n*: orders you never placed"
+    Sometimes a workshop needs an intermediate good it can't make itself — a fletchery short on the **plant string** its arrows require, say. Rather than stall, it **auto-queues that ingredient on the workshop that does make it** (here, your general-crafts stone), and it shows up there as a gray **+n** beside the gold count of your own orders. These derived orders ride *behind* your gold ones, and the production chain manages them for you: you can't nudge them with the ± buttons, and they quietly clear themselves the moment the need disappears.
 
 !!! tip "Min for staples, Orders for projects"
     Keep a small **Min** of everyday goods — cordage, bricks, basic tools — so your settlement never runs dry. Reach for **Orders** when a build or an expedition needs a specific pile of something *right now*.

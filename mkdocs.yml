@@ -190,11 +190,14 @@ nav:
       - Brewing: antiquity/brewing.md
       - Herbalism & Poisons: antiquity/herbalism.md
       - Fletching & Archery: antiquity/fletching-and-archery.md
+      - Hunting & Wild Animals: antiquity/hunting.md
       - Building Materials: antiquity/building.md
   - Reference:
       - reference/index.md
       - Recipe Reference: reference/recipes.md
+      - How the World Changes: reference/the-world.md
       - Keybinds & Commands: reference/keybinds-and-commands.md
+      - Multiplayer & Game Rules: reference/multiplayer.md
       - The Chronicle & Ponder: reference/codex-and-ponder.md
       - Optional Mods: reference/optional-mods.md
       - Glossary: reference/glossary.md
