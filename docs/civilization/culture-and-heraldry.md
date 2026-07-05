@@ -152,9 +152,20 @@ Proud of the design? Use **Take a copy** to pull a decorative banner into your h
 
 Over time, your people stop borrowing words and start coining their own. Every settlement speaks a subtly different tongue, seeded from its name and its founding — and as it grows and advances through the eras, it invents names for the concepts that matter to it. You can browse this living dictionary in the town hall's **Lexicon** tab.
 
-The **Settlement Lexicon** lists every word your people have recorded, with a running count (*"… words"*) and a **Search words…** box to hunt through them. A young settlement starts nearly wordless — *"No words recorded yet"* — and fills its dictionary as it works, researches, and ages.
+The **Settlement Lexicon** is your people's growing word-list, shown with a running count (*"… words"*) and a **Search words…** box to hunt through them by invented word, meaning, or category. A young settlement starts nearly wordless — *"No words recorded yet"* — and fills its dictionary as it works, researches, and ages. Every row pairs the **invented word** with its plain-English **meaning** and, where one exists, the shared **root** it grew from — so you can spot when two words spring from the same stem. The rows are colour-coded by which corner of settlement life they name — **Goods** in blue, **Work** in orange, **Knowledge** in green, **Tradition** in purple:
+
+| Category | Names… | Grows as you… |
+| --- | --- | --- |
+| **Goods** | Every item your settlement knows | Discover and unlock new goods |
+| **Work** | The jobs your people hold | Unlock new professions |
+| **Knowledge** | Completed **science** research | Finish nodes in the [science tree](research-and-eras.md) |
+| **Tradition** | Completed **Culture** research | Finish nodes in the Culture tree |
+
+So the Lexicon isn't a fixed vocabulary — it thickens in step with your civilization. A fresh Antiquity village has words for little more than its first goods and gatherers; a mature one names hundreds of items, every trade it practises, and every idea it has ever researched. The coined forms lean on your current era, too, so a word's flavour can shift as your people advance.
 
 This isn't just flavour text on a shelf. The same tongue styles your [citizens'](citizens.md) own **names**: a person's given name is spoken in your settlement's language from birth, and the **surnames** they earn through their trade grow from the very same roots the Lexicon records — a hunter's family name and the settlement's word for *"Hunter"* share a stem. No two civilizations will ever sound quite alike.
+
+Citizen names always speak the settlement tongue — but the language can spread much further, if you let it. With the **`useCustomLanguage`** game rule switched on, your people's words replace the ordinary English labels *across the whole interface*, not just the Lexicon tab: a known item wears its coined name everywhere it names itself (the tooltip's first line, the hotbar selector, the anvil, chat hover), job titles read in your tongue on every citizen and roster screen, and even the creatures around you answer to your settlement's names. It's off by default; a server owner turns it on with `/gamerule useCustomLanguage true`. See [Multiplayer](../reference/multiplayer.md) for this rule and the others.
 
 !!! quote "A tongue of your own"
     Two towns can be founded a hundred blocks apart, on the same biome, with the same Culture Style — and still name the world differently. The Lexicon is where that difference is written down.

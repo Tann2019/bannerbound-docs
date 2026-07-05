@@ -10,7 +10,7 @@ description: How a settlement governs itself — from leaderless anarchy to a Ch
 !!! abstract "In short"
     - Before you enact a **code of laws**, your settlement is in **anarchy**: citizens self-organize, but they *won't obey* direct job assignments — you can only ask them to switch jobs or set drop-offs.
     - When the tribe is established, everyone votes on a government: a **Chiefdom** (one Chief) or a **Council** (needs multiple players).
-    - A **Chief** holds exclusive powers — directing research, assigning jobs, changing policies, negotiating trade, and issuing orders — and can be **deposed by a coup** if unrest runs high.
+    - A **Chief** holds exclusive powers — directing research, assigning jobs, changing policies, negotiating trade, and issuing orders. High unrest can **depose** them in a coup — but only with **two or more players online**. Solo, the coup is *suppressed* and your grip simply slips faster instead.
     - A **Council** settles weighty matters by **majority vote** in chat.
     - **Policies** occupy limited slots and grant lasting perks — but almost every one carries a cost.
 
@@ -91,14 +91,21 @@ Attempt any of these as an ordinary member and the town hall turns you away — 
 
 A Chief who wants out opens the town hall and chooses **Step Down as Chief**. There's a floor on this: you must **lead for at least 20 minutes** before you're allowed to abdicate (*"You must lead for at least 20 minutes before stepping down"*). Stepping down throws the seat open and a new leader must be chosen.
 
-When the Chief simply logs off, the settlement doesn't grind to a halt. A **regent** steps in to fill the role while the Chief is away — *"%s is filling in as regent while the Chief is away"* — and steps back down when the Chief returns.
+When the Chief simply logs off, the settlement doesn't grind to a halt. A **regent** steps in to fill the role while the Chief is away — *"%s is filling in as regent while the Chief is away"* — and steps back down when the Chief returns. The regent is chosen automatically: it's the **least-resented online member**, the settler the citizens most trust to hold the reins.
+
+A regent wields **routine authority only**. They can keep the day running — assigning jobs and directing research — but they **cannot** take weighty, irreversible actions: no confirming policies, no expanding territory, no declaring war, and no **disbanding** the settlement. Those rest with the real Chief — who can even **disband the tribe unilaterally**, a two-press confirm with no vote (see [Settlements](settlements.md)). The split is deliberate: it stops a stand-in from having the settlement dissolved out from under an absent leader.
 
 ### Coups
 
-A Chief rules only as long as the people tolerate them. Let **unrest** climb high enough and the settlement will turn. First a warning: *"The people may rise against the Chief at dawn!"* If nothing changes, the citizens depose the Chief at first light and install a new leader — *"The citizens have deposed %s. %s now leads."*
+A Chief rules only as long as the people tolerate them. Once **more than 45% of your citizens** hold deep resentment toward the Chief, the settlement reaches a coup condition, and it comes to a head at the next **dawn**. The evening before, a warning goes out: *"The people may rise against the Chief at dawn!"*
 
-!!! danger "Read the warnings"
-    A coup fires at **dawn**, not immediately — so a coup warning is a countdown, not a verdict. Address the unhappiness driving it ([food](food.md), [housing](housing.md), overwork, ignored suggestions) before the sun rises and you keep your seat. See [Crises](crises.md) for what pushes a settlement to the brink.
+What actually happens at dawn depends on **how many players are online**:
+
+- **Two or more players online** — the citizens depose the Chief and seat one of the other members in a snap vote: *"The citizens have deposed %s. %s now leads."* This is a real change of leader.
+- **Solo, or fewer than two players online** — there's no one to elect in your place, so the coup is **suppressed** and you keep your seat. But you don't get off free: while the coup condition holds, your citizens' **compliance decays twice as fast**, so strikes, work refusals, and job-switch denials pile up sharply until you cool the unrest.
+
+!!! warning "A solo Chief is never actually deposed — but still pays"
+    The dawn warning fires on the unrest condition alone; it doesn't check who's online. So a solo Chief will see *"The people may rise against the Chief at dawn!"* and then keep their seat every time — the deposition never lands without a second player to install. Don't panic at the banner, but don't shrug it off either: the **doubled compliance decay** is the real bite. Address the unhappiness driving it ([food](food.md), [housing](housing.md), overwork, ignored suggestions) before it hollows out your labor. See [Crises](crises.md) for what pushes a settlement to the brink.
 
 ## The Council in detail
 
@@ -158,6 +165,15 @@ During a [crisis](crises.md), advisors can go a step further and directly **advi
 
 Every policy is tagged with one type — **Economic**, **Cultural**, **Scientific**, **Militaristic**, **Diplomatic**, or **Faith** — and it fills a slot of that matching type. **Diplomatic** and **Faith** slots only ever appear once a research or system unlocks them, so you won't see them sitting empty in the early game.
 
+Which typed slots you start with **depends on your government**. Before any research grants extras, the base layouts are:
+
+| Government | Base policy slots |
+|---|---|
+| **Chiefdom** | Economic · Cultural · Scientific · Militaristic |
+| **Council** | Economic · Cultural · Cultural · Scientific |
+
+A Council **has no base Militaristic slot** — it trades that slot for a second **Cultural** one. That has a real bite: the wartime policies **Night Watch** and **Rallying Speeches** are both Militaristic, so a **Council can slot neither** until research grants it a Militaristic slot. A **Chiefdom** starts with exactly **one** Militaristic slot, so those two policies must **compete for it** — you run one or the other, not both. Completed science and culture nodes can grant additional typed slots on top of this base.
+
 On top of those typed slots, each government keeps a single **signature slot** reserved for its one exclusive policy — **Workload Share** for a Chiefdom, **Opinionated Crowd** for a Council. You can only run your own government's signature policy.
 
 ### Known policies
@@ -178,8 +194,8 @@ On top of those typed slots, each government keeps a single **signature slot** r
 !!! warning "Rallying Speeches and Glory Tales don't mix"
     These two are **mutually exclusive** — you can run one or the other, never both. Rallying Speeches is a steady wartime bonus at a happiness cost; Glory Tales is a one-time morale surge at the start of each new war. Pick the one that fits how you fight.
 
-!!! example "A wartime policy loadout"
-    Facing a neighbor's warband, a Chief might enact **Night Watch** so guards hold the border overnight, then choose between **Rallying Speeches** (sustained compliance for a long siege) or **Glory Tales** (a burst of morale to rush an early strike). Both militaristic slots earn their keep only while the war is on — swap them back out once peace returns and the happiness penalties stop.
+!!! example "A wartime policy loadout (Chiefdom)"
+    A Chiefdom has just **one Militaristic slot**, and both **Night Watch** and **Rallying Speeches** want it — so you run one or the other, never both. **Glory Tales**, by contrast, is a **Cultural** policy and doesn't touch the military slot, so a Chief can pair it with Night Watch: guards holding the border overnight *and* a morale surge at the start of each war. Facing a drawn-out siege you might instead give the military slot to **Rallying Speeches** for sustained compliance. These earn their keep only while the war is on — swap them back out once peace returns and the happiness penalties stop. A **Council** can't field Night Watch or Rallying Speeches at all until research grants it a Militaristic slot.
 
 ## Where to next
 

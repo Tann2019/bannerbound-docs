@@ -9,12 +9,33 @@ description: Quick-reference material for Bannerbound — keybinds, commands, th
 
 <div class="grid cards" markdown>
 
+-   :material-grid:{ .lg .middle } **Recipe Reference**
+
+    ---
+    Every custom recipe as a Minecraft-style crafting grid, generated straight from the modpack's data.
+
+    [:octicons-arrow-right-24: Read](recipes.md)
+
+-   :material-earth:{ .lg .middle } **How the World Changes**
+
+    ---
+    What Bannerbound strips from vanilla — removed structures and dungeons, hidden ores, locked portals, and the ruins of fallen settlements.
+
+    [:octicons-arrow-right-24: Read](the-world.md)
+
 -   :material-keyboard:{ .lg .middle } **Keybinds & Commands**
 
     ---
     Every Bannerbound key binding and the admin/debug commands for eras, research, and world age.
 
     [:octicons-arrow-right-24: Read](keybinds-and-commands.md)
+
+-   :material-account-multiple:{ .lg .middle } **Multiplayer & Game Rules**
+
+    ---
+    Proximity chat and whisper range, and the custom game rules — global chat, offline war, the sky, and the settlement tongue.
+
+    [:octicons-arrow-right-24: Read](multiplayer.md)
 
 -   :material-book-open-page-variant:{ .lg .middle } **The Chronicle & Ponder**
 

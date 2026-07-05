@@ -185,7 +185,7 @@ Limestone also cuts into **Limestone Bricks** and their stair, slab, and wall va
 
 **Salt** isn't fired on the slab, but it belongs to the same practical age of preservation. Once you complete the **Food Preservation** research, salt becomes your simplest way to make the harvest last.
 
-To salt food, **hold Salt in one hand and a perishable food in the other, then hold use**. The food gains a **Salted** tag in its tooltip and **lasts 25% longer** before it spoils. A **Block of Salt** is the compact way to stockpile it.
+To salt food, **hold Salt in one hand and a perishable food in the other, then hold use**. The food gains a **Salted** tag in its tooltip and **lasts about twice as long** (roughly +100%) before it spoils. A **Block of Salt** is the compact way to stockpile it.
 
 See [Cooking & Food](cooking-and-food.md) for the wider preservation picture — salting, drying, and smoking against leaner days.
 

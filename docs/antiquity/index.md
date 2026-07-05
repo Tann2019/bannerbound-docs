@@ -94,6 +94,13 @@ The **Antiquity** expansion replaces vanilla's early progression with a tactile,
 
     [:octicons-arrow-right-24: Read](fletching-and-archery.md)
 
+-   :material-paw:{ .lg .middle } **Hunting & Wild Animals**
+
+    ---
+    Wild prey that flee, scatter, and tire; luring and taming, bleeding wounds and blood trails, charging boars, and dangerous wolves.
+
+    [:octicons-arrow-right-24: Read](hunting.md)
+
 -   :material-home-variant:{ .lg .middle } **Building Materials**
 
     ---

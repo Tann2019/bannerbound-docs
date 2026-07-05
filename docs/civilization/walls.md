@@ -25,8 +25,8 @@ Wall Building unlocks two things at once:
 - **The wall planner** — the Walls tab tools that lay a fortification along your borders.
 - **The [Builder](jobs-and-labor.md)** — the worker whose whole trade is turning your blueprint into standing stone, block by block.
 
-!!! info "Walls are stakes, not scenery"
-    A raised wall isn't just decoration. It factors into your settlement's **safety**, your **population cap**, and the **raid pressure** you draw — a walled town is a defended town. Because a demolished section refunds its material, a wall can also *grow with you* as your border changes, so it's worth planning even if you build it in stages.
+!!! info "Walls are a physical barrier, not scenery"
+    A raised wall is a real obstacle, not a hidden stat. It doesn't change your population or how often raiders come — what it does is stand in the way. A closed line of stone with a defended gate turns a wide-open settlement into a chokepoint: raiders can't pour in from every direction, so they're funnelled toward the [gates your **Guards** hold](jobs-and-labor.md). Because a demolished section refunds its material, a wall can also *grow with you* as your border changes, so it's worth planning even if you build it in stages.
 
 ---
 
@@ -45,7 +45,7 @@ The natural order is left to right: **design once**, then **preview and construc
 
 ## The Wall Designer
 
-The Designer is a focused little 3D editor with three tabs across the top — **Segment**, **Corner**, and **Gate**. You author each one, and the layout engine handles stitching them into a full wall around any shape of territory.
+The Designer is a focused little 3D editor with three tabs across the top — **Segment**, **Corner**, and **Gate**. You author each one, and the layout engine handles stitching them into a full wall around any shape of territory. A menu bar runs across the top — **File · Edit · View · Go** — with everything below covered in its menus, and your work autosaves as a draft every time you leave.
 
 === "Segment"
 
@@ -85,6 +85,29 @@ Two modes drive the editor. Toggle between them, and pick your material from the
 | **Wall context** | Show faint ghost copies of the neighboring wall pieces around the one you're editing, so you can see how the tiling reads. |
 | **Outside label** | Marks which face points *outward* — the side that faces the wilderness — so you orient decoration correctly. |
 
+A right-side **Required / piece** panel keeps a running tally of the blocks the current tab's design uses — "5× cut limestone, 2× oak fence," and so on — so you can see the material bill for one piece before you ever commit a wall.
+
+### Editing and camera shortcuts
+
+The **Edit** menu carries the usual editor moves, all with keyboard shortcuts:
+
+| Action | Shortcut |
+| --- | --- |
+| **Undo** | ++ctrl+z++ |
+| **Redo** | ++ctrl+shift+z++ |
+| **Select All** (in Select mode) | ++ctrl+a++ |
+| **Delete Selection** | ++delete++ |
+| **Deselect** | *Edit menu* |
+
+To move the camera around your work:
+
+| Camera | How |
+| --- | --- |
+| **Orbit** | Drag with the **middle mouse button**, or nudge with ++a++ / ++d++ (turn) and ++w++ / ++s++ (tilt). |
+| **Pan** | Hold ++shift++ and drag with the **middle mouse button**. |
+| **Zoom** | Scroll the mouse wheel. |
+| **Reset Camera** | **View → Reset Camera** snaps the view back to its starting angle and distance. |
+
 !!! tip "Design outward-facing"
     The editor treats one side as the **outside** of your wall. Put your strongest, most imposing face there — the layout engine rotates every placed piece to point that face at the wilderness, no matter which compass direction a given stretch of border runs.
 
@@ -94,6 +117,7 @@ Name your work in the **Design name** field, then hit **Save & Set Active**. A f
 
 - **Save & Set Active** saves the designs on **all three tabs** together and makes them your settlement's active wall style in one click.
 - Typing a **new** name saves a **new** design into your library; keeping the existing name **overwrites** it. That lets you keep several styles on the shelf — a humble palisade for a young border, a grand rampart for your capital.
+- To take a design back *off* the shelf, click its row in the **Library — click to load** list beneath the name field. It drops that saved design straight into the current tab, ready to tweak or re-save. (Save & Set Active to actually make an edited design active again.)
 - Your active style is the face of your civilization as surely as your [heraldry](culture-and-heraldry.md) is. Choosing materials and a silhouette that match your culture ties the whole settlement together.
 
 !!! example "Authoring a simple rampart"
@@ -102,6 +126,14 @@ Name your work in the **Design name** field, then hit **Save & Set Active**. A f
     3. Switch to **Corner**. Make it a **4×4** post one course taller than the segment.
     4. Switch to **Gate**. Carve a 2-wide, 3-tall opening through the middle and top it with an arch.
     5. Name it "Limestone Rampart" and hit **Save & Set Active**.
+
+### Sharing designs between worlds
+
+Your library lives inside a single world's save. To carry a design to another world — or hand one to a friend — use the **File** menu:
+
+- **File → Export Tab to File** writes the current tab's design out as an `.nbt` file into your game folder's `bannerbound/wall_designs` directory, named for the design and its kind.
+- **File → Reload Design Files** re-reads that folder, so any `.nbt` designs you (or someone else) dropped in appear alongside your saved library in the **click to load** list, ready to load into a tab.
+- **File → Open Designs Folder** opens `bannerbound/wall_designs` in your system file browser, so you can copy designs in and out. Drop a friend's exported piece in there, Reload, and it's yours to build.
 
 ---
 
@@ -124,6 +156,9 @@ The upshot: you design three small pieces, and get a coherent fortification that
 Open **Wall Preview & Construct**. Nothing is built and nothing is spent yet — this is where you look before you leap.
 
 Click **Preview Ghosts** to project the entire planned wall into the world as translucent **ghost blocks**. Now go for a walk. Follow the line around your border, stand under where the gates will be, look up at the corner towers, and make sure the wall sits where you want it. Hit **Hide Preview** when you're done inspecting.
+
+!!! info "How much is already built"
+    Once you've committed a plan, the top of the Preview and Refine screens shows a completeness readout — **"plan committed, X% built"** — so you can see how far your builders have gotten. Change your design, move a gate, or reshape your [territory](territory.md) and it flips to **"an OLDER design is built (X%) — Construct applies this layout,"** a reminder that the wall standing in the world no longer matches the plan you're looking at until you **Construct** again.
 
 ### Placing gates
 
@@ -148,7 +183,7 @@ Select a wall piece, then use:
 | --- | --- |
 | **Raise +1** / **Lower -1** | Raise or lower the top of the selected piece, course by course — build a taller gatehouse, drop a wall to a low parapet where it overlooks a cliff. |
 | **Reset height** | Snap the selected piece back to its design height. |
-| **Variant: cycle** | Cycle the selected piece through the saved variants of its design — including the stepped versions the layout auto-derives for slopes — for a less uniform look. |
+| **Variant: cycle** | Cycle the selected piece through *your own saved library designs of the same kind and footprint* — the active design shows as **Default** — for a less uniform look. This only does something once you've saved **extra same-size (Length × Depth)** segment or corner designs in the Designer; with none saved, the button just tells you so. (The stepped-slope versions the layout auto-derives on hills are applied for you automatically — they aren't what this button cycles.) |
 | **Foundation: on/off** | Toggle the foundation fill under the selected piece. |
 | **Toggle gate** | Turn the selected straight-run segment into a gate, or a gate back into wall. |
 | **Flat preview** | Swap between the 3D view and a flat, top-down look at the whole line. |

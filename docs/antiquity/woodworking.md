@@ -8,7 +8,7 @@ description: Carve a Chopping Stump, split Firewood for your first campfire, the
 <p class="bb-lead"><em>The forest is your first quarry. A lone log becomes a stump, a stump becomes a hearth, and a bench of two logs turns a whole armful of timber into planks, tools, and parts in a single pull of the saw.</em></p>
 
 !!! abstract "The short of it"
-    - **Chopping Stump** — right-click an **isolated** log with an axe to carve one. Put logs on it, right-click with an axe to split **Firewood** (about half your swings land). Stack four Firewood on the ground to form an unlit **Campfire**.
+    - **Chopping Stump** — right-click an **isolated** log with an axe to carve one. Put logs on it, right-click with an axe to split **Firewood** (about 6 of every 7 swings land a piece). Stack four Firewood on the ground to form an unlit **Campfire**.
     - **Woodworking Table** — right-click one of **two adjacent logs** with a **Bone Saw** to form it. It is two blocks long.
     - **Batch woodworking** — right-click logs (and sticks) onto the table to build a **budget** (sneak adds a whole stack), pick a floating preview to **queue** outputs, then right-click with the Bone Saw and work the **sawing minigame** to cut the whole batch at once.
     - Carpentry has **no quality** — it is about throughput, not craftsmanship.
@@ -19,14 +19,14 @@ Woodworking is the craft that lets a settlement build up from the dirt. Before i
 
 ## The Chopping Stump
 
-Everything starts before you even have a saw. Find or place a **single, isolated log** on the ground, hold an axe, and right-click it. The log is carved into a **Chopping Stump** — a knee-high block that holds logs for splitting.
+Everything starts before you even have a saw. Find or place a **single, isolated log** on the ground, hold an axe, and right-click it. The log is carved into a **Chopping Stump** — a knee-high block that holds logs for splitting. It takes up to a full stack (**64 logs**) of a single wood type at a time; try to add a different wood and the stump turns it away until the current pile is chopped down.
 
 !!! warning "Isolated means isolated"
     The stump only carves from a log that stands **alone**. Logs still connected to a standing tree are ignored, so you cannot accidentally chew up the trunk you are harvesting. Break a log free, drop it, and place it by itself first.
 
 ### Splitting Firewood
 
-Once you have a stump, put logs on it and right-click with an axe to split them. Each swing has a **50% chance** to produce a piece of **Firewood** — so roughly half your strokes land, half glance off. Keep swinging until the log is spent, then collect the Firewood that piles up.
+Once you have a stump, put logs on it and right-click with an axe to split them. Each swing has about an **85% chance** to produce a piece of **Firewood** — so roughly 6 of every 7 strokes land one, and only the occasional swing glances off. Every swing also costs your axe **1 durability**, whether or not a piece drops, so keep an eye on your edge when working a big pile. Keep swinging until the log is spent, then collect the Firewood that piles up.
 
 Firewood is your early answer to charcoal: it **replaces charcoal in the earliest campfire crafting**, so you can raise a hearth long before coal is common.
 

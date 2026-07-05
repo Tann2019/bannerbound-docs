@@ -74,6 +74,9 @@ Camps are already out there before you know it, tucked into unclaimed land well 
 
 Discovery cuts both ways. Now that the camp knows where you live, it will start sending envoys to your door — and, if its mood sours, raiding parties. But now that *you* know where *it* lives, you can go and end it.
 
+!!! note "What a camp looks like"
+    A camp is a real, built settlement, not just a knot of wandering mobs. At its heart sits a **campfire** beside a tall **standard dyed in the camp's colour** — the very banner you'll later raze to clear it. Ringed around that centre stands a cluster of buildings: a **chief hut**, a **stockpile**, and a scatter of **huts and tents** for the warriors, all linked back to the fire by trodden dirt paths. Spot that coloured standard and you've found the thing that has to fall.
+
 !!! info "The Chronicle points the way"
     While you're near a camp that's hostile to you, a **quest entry** appears in your journal with a waypoint and a compass bearing toward it — *"Reach &lt;camp&gt;"* — alongside the two objectives that clear it: **"Slay the commanders"** and **"Raze the standard."** The entry fades when you travel far away, but your progress is kept. See [the Chronicle](../reference/codex-and-ponder.md) for how journal quests work.
 
@@ -109,6 +112,9 @@ Behind every parley is the **barter** table, where you build an offer good by go
 - **Your offer** and **Their offer** — the goods on the table between you.
 - **Storage** — what your **settlement stockpile** holds. This is the crucial rule: you pay from your town's stores, *not* from your own pockets. Anything you offer is withdrawn from settlement storage, and anything you receive is handed to you.
 - **Their storage** — the goods the camp has to trade.
+
+!!! note "Their storage grows richer as you befriend them"
+    A camp's **Their storage** is no fixed shelf — it reflects both the land it lives on and how well it knows you. The wares are flavoured by the camp's **home biome**: a mountain camp offers stone and coal, a desert one cactus and sand, a wooded one sticks and berries. And both the **variety and the quantity** widen as your standing warms — a friendlier camp lays out more kinds of goods, in larger stacks. **Only a fully trusted camp will trade metal** such as iron ingots. It's one more reason to court a camp's goodwill rather than merely fend it off: a friend is also your best-stocked trading post.
 
 The whole system runs on one idea: **worth**.
 
@@ -185,7 +191,15 @@ A **war-horn** sounds, and a banner locks to the top of your screen for the whol
 
 Raiders strike more often than any other camp; Marauders come less frequently but hit as part of their whole demand-or-die cycle. You cannot disband a settlement mid-raid — *"survive the raid or make peace first."*
 
-### Holding the line
+### How the raiders arm themselves
+
+A warband is only as dangerous as the tools it carries — and those tools track *your* world. A camp always sits **exactly one research behind the most advanced settlement anywhere in the world**, so as your people climb from bone to wood to stone to iron, the raiders climb the same ladder a single step behind you. A civilization that rushes its research trains its own tougher enemy: the further ahead you push, the better-armed the warbands that come to test your wall.
+
+- **They throw spears.** A spearman doesn't just close and stab — it hurls its spear at you from a few blocks out before wading in to melee, so a volley can reach you even behind the front rank. There's a brief wind-up as it draws back to throw.
+- **They shoot back.** Once **[Archery](../antiquity/fletching-and-archery.md)** exists anywhere in the world, roughly **six in ten** of a camp's warriors take up bows as **skirmishers** — kiters who refuse to stand and trade blows. Close on one and it backs away to keep the range open; let it drift out of reach and it advances to reel you in, loosing arrows the whole while. Each shot has a short draw you can read and dodge.
+
+!!! tip "Line of sight is now a weapon"
+    Against a camp that fields bows, the fight is no longer settled at the wall. Skirmishers only loose when they can *see* you, so gates, ramparts, and terrain that break their sightline are worth as much as any armour — and closing the gap fast, before they can kite, is often the surest way to shut them down. See [Walls](walls.md) for funnelling a raid into cover you control.
 
 Raids are fought by your **Guards**. A guard is a trained watch — far steadier in a brawl than an ordinary citizen, patrolling your borders and refusing to be lured off into the wild. When a raid lands, guards converge on the threat and hold the line while it plays out. Unlock the Guard through research and post a few before you're ever discovered; see [Jobs & Labor](jobs-and-labor.md) for how to assign one.
 

@@ -10,13 +10,16 @@ description: Mark homes with the House Block and Housing Orders, meet each home'
 !!! abstract "The short version"
     - Place a **House Block** inside a finished room, then use **Housing Orders** to mark two corners around a bed. The first box must contain a bed.
     - A home must be **enclosed** (walls + roof), **connected**, hold a **bed**, and be small enough for your **era** — press **Detect** on the House Block to let the game find the room for you.
-    - Meet the home's **Needs**: Lighting, Storage, a lit Campfire, Cooked food, and Charcoal (the last two live in the home's own chest).
-    - Roomier homes are happier: **Spacious → Comfortable → Snug → Cramped**.
+    - Meet the home's **Needs** — the checklist **grows with research**, from just a bed up to Lighting, Storage, a lit Campfire, Cooked food, and Charcoal (the last two live in the home's own chest and are eaten daily).
+    - Roomier homes are happier: **Spacious → Comfortable → Snug → Cramped** (25 / 12 / 6 blocks of room per bed). Below about **10 blocks per bed**, Happiness is capped no matter what.
+    - Every home has one **Happiness** score (0–100) blending Appeal, met Needs, and living space — and it **gates births**: a lovely home makes couples far likelier to have a child, a miserable one can stop births cold.
     - **Beauty** matters too. Pretty blocks around a home or [workshop](workshops.md) raise happiness and worker output; ugly ones drag it down.
 
 ## Why homes matter
 
 Every adult [citizen](citizens.md) wants a place to call their own. A resident with a good home thinks *"I love my house!"*; one without wanders your streets thinking *"I don't have a place to call home"* — and unhappy citizens work poorly, and eventually pack up and leave.
+
+Every home carries a single **Home Happiness** score from **0 to 100** — one number that folds together the home's **Appeal** (its beauty), how many of its **Needs** are met, and its **living space**. It is more than a mood reading. Home Happiness **gates births**: couples who share a happy home are far likelier to conceive — a truly delightful home can coax even near-strangers into starting a family — while a miserable or overcrowded one can stop children coming in that house altogether. Because a home's quality feeds straight into your settlement's [population growth](settlements.md), a handful of lovely homes does more for your numbers than a sprawl of bare boxes.
 
 A **home** is not just any room. It is a space you deliberately mark, that the game then checks against a short list of requirements. Get those right and the home turns **Valid**; miss one and the House Block will tell you exactly what is wrong.
 
@@ -29,7 +32,7 @@ The **House Block** is the anchor for a home. Everything about that dwelling —
 - [ ] Place the **House Block** somewhere inside that room. It becomes the home's anchor.
 - [ ] **Right-click** the House Block to open its status screen and read what the home still needs.
 
-The status screen is your dashboard for that dwelling. It shows the home's **Status**, its **Appeal**, its living **Space** (and how much room each bed gets), overall **Happiness**, the **Needs** checklist, and the current **Residents** — plus a **Detect** button.
+The status screen is your dashboard for that dwelling. It shows the home's **Status**, its **Appeal**, its living **Space** (and how much room each bed gets), its overall **Happiness** (the headline **0–100** score described above), the **Needs** checklist, and the current **Residents** — plus a **Detect** button.
 
 ## Marking a home with Housing Orders
 
@@ -76,18 +79,26 @@ Homes have a maximum size that grows as your civilization advances. In the earli
 
 ## The home's Needs
 
-A valid, enclosed home still has to be *livable*. The status screen lists a short **Needs** checklist — each one shows **Met** or **Not met yet**. Satisfy them all for a genuinely happy resident.
+A valid, enclosed home still has to be *livable*. Beyond a bed, a home wants a short list of comforts — the status screen lists them as a **Needs** checklist, each showing **Met** or **Not met yet**. Every met need lifts the home's Happiness; every unmet one drags it down.
+
+The checklist **grows as your civilization advances**. A fresh Antiquity hut is asked for nothing but a bed; each comfort below switches on only once you've [researched](research-and-eras.md) it, so an early home is trivial to please and a mature one has more to keep up.
 
 | Need | How to satisfy it |
 | --- | --- |
 | :material-lightbulb-on: **Lighting** | Place a torch, lantern, or other bright light source inside the home |
 | :material-treasure-chest: **Storage** | Place a chest or barrel inside the home |
 | :material-campfire: **Campfire** | Build and **light** a campfire inside the home |
-| :material-food-drumstick: **Cooked food** | Keep cooked food in the home's **own** chest or barrel |
-| :material-fire: **Charcoal** | Keep charcoal in the home's **own** chest or barrel |
+| :material-food-drumstick: **Cooked food** | Keep cooked food in the home's **own** chest or barrel — grilled meat and fish, bread, baked potatoes, and stews all count. **Eaten daily.** |
+| :material-fire: **Charcoal** | Keep charcoal in the home's **own** chest or barrel. **Burned daily.** |
+
+!!! note "Needs are soft — they never break a home"
+    An unmet need only lowers the home's **Happiness**; it never turns a Valid home **Broken** or evicts a resident. Someone will happily live in a home that's missing its campfire or has run out of cooked food — they'll just be less content, and (per [above](#why-homes-matter)) less likely to start a family. Fix needs to keep a home *thriving*, not to keep it *standing*.
 
 !!! warning "Stock the home's own storage — not the settlement stockpile"
     Cooked food and charcoal must sit in a chest or barrel *inside that home*, not in your central stockpile. Each dwelling keeps its own pantry and fuel. If the Cooked food or Charcoal need won't turn green, check that the food and charcoal are physically stored inside those four walls — a citizen who *"went to bed hungry"* is a citizen with an empty home chest.
+
+!!! note "Luxuries are eaten, not just displayed"
+    Cooked food and charcoal aren't a one-time check — each resident **eats 1 cooked food and burns 1 charcoal per in-game day**, so a full pantry drains over several days. When it runs dry the need lapses and Happiness dips until it's restocked. A [Stocker](jobs-and-labor.md) tops up each home's pantry from your settlement's surplus, so keep cooked food and charcoal in steady supply and the shelves refill themselves.
 
 The [Campfire](../antiquity/cooking-and-food.md) and cooked food ties housing directly into your kitchen: as long as your cooks are turning out meals and someone stocks each home, the fire stays warm and the pantry stays full.
 
@@ -97,19 +108,21 @@ A home shares its enclosed room between the beds inside it. The more space each 
 
 === "Roomier"
 
-    | Tier | Feel |
-    | --- | --- |
-    | **Spacious** | Plenty of room to breathe — the happiest homes |
-    | **Comfortable** | A pleasant, well-proportioned dwelling |
+    | Tier | Room per bed | Feel |
+    | --- | --- | --- |
+    | **Spacious** | 25+ blocks | Plenty of room to breathe — the happiest homes |
+    | **Comfortable** | 12–24 blocks | A pleasant, well-proportioned dwelling |
 
 === "Tighter"
 
-    | Tier | Feel |
-    | --- | --- |
-    | **Snug** | Cozy, but starting to feel close |
-    | **Cramped** | Too many beds jammed into too little room — happiness suffers |
+    | Tier | Room per bed | Feel |
+    | --- | --- | --- |
+    | **Snug** | 6–11 blocks | Cozy, but starting to feel close |
+    | **Cramped** | under 6 blocks | Too many beds jammed into too little room — happiness suffers |
 
-The screen spells out the exact math for that home — *"so many blocks of enclosed room shared between so many beds"* — so you can see at a glance whether to add a bed or add a wing. Cramming a second and third bed into a tiny hut is tempting early on, but a **Cramped** rating eats away at the very happiness the home is meant to provide.
+The tier is simply the home's **enclosed interior divided by its number of beds** — so slotting another bed into a fixed room drops every resident into a tighter tier. The screen shows that figure ("N blocks each") beside the tier word, so you can see at a glance whether to add a bed or add a wing.
+
+There's a hard rule hiding under the friendly words: **below about 10 blocks of room per bed, the home's Happiness is capped** — and the tighter it packs, the lower that ceiling falls. A crammed dormitory *cannot* read happy no matter how many lanterns, chests, and comforts you stuff in; overcrowding overrides every other comfort. That's the real reason to give beds room to breathe — and the number behind "one good house beats three shacks."
 
 !!! tip "One good house beats three shacks"
     If you're short on homes, it's usually better to build one **Spacious** house with a couple of beds than to scatter cramped single-bed boxes. You spend fewer blocks on walls, and every resident lands in a happier tier.
@@ -181,11 +194,18 @@ It's the precision tool on top of the broad strokes — use it after Detect to p
 ## Common mistakes
 
 !!! failure "Homes that won't validate"
-    - **Food or charcoal in the stockpile.** Both needs read only the home's *own* chest — stock each dwelling individually.
-    - **An unlit campfire.** The fire must be lit and inside the walls, not just placed.
+    These stop a home from ever turning **Valid** — no bed can be assigned until they're fixed:
+
     - **A doorway with no door,** or any wall gap wider than a window — the room reads as not enclosed.
     - **A house too big for your era.** Build smaller or [research](research-and-eras.md) more room.
     - **No claimed ground.** The room must sit inside your settlement's territory before a House Block will take.
+
+!!! warning "…and homes that validate but stay unhappy"
+    These never make a home **Broken** — they only sap its Happiness (and, with it, the chance of a new child):
+
+    - **Food or charcoal in the stockpile.** Both needs read only the home's *own* chest — and both are eaten daily — so stock each dwelling individually.
+    - **An unlit campfire.** The fire must be lit and inside the walls to satisfy the Campfire need.
+    - **An overcrowded room.** Too many beds for the space caps Happiness no matter how nice the home is.
 
 ## Where to next
 

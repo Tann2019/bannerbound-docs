@@ -137,7 +137,7 @@ description: An A-to-Z reference of every Bannerbound term, each linking to the 
 :   A lone messenger a [barbarian](../civilization/barbarians.md) camp sends to your town hall once it has discovered you. **Right-click one to parley**; cut one down and relations plummet. See [Barbarians & Raids](../civilization/barbarians.md).
 
 **Era**
-:   The broad epoch your settlement belongs to. There are nine, climbed in order — **Ancient, Classical, Medieval, Renaissance, Industrial, Diesel, Atomic, Modern, Future** — each reached by finishing its keystone research. Advancing an era opens higher-tier research and widens your borders. See [Research & Eras](../civilization/research-and-eras.md).
+:   The broad epoch your settlement belongs to. There are nine, listed in order — **Ancient, Classical, Medieval, Renaissance, Industrial, Diesel, Atomic, Modern, Future**. Today the research tree carries you only as far as **Medieval** (its last era keystone is Iron Working); the six eras beyond it are defined but have no research keystones yet, so they're reachable only through the operator command `/bannerbound set_age`. Advancing an era opens higher-tier research and widens your borders. See [Research & Eras](../civilization/research-and-eras.md).
 
 ### F
 
@@ -221,7 +221,7 @@ description: An A-to-Z reference of every Bannerbound term, each linking to the 
 :   The small HUD list pinned to the side of your screen showing only your *live* current tasks — auto-pinned tutorials and active crisis steps. It's the counterpart to the permanent [Chronicle](codex-and-ponder.md). See [The Chronicle & Ponder](codex-and-ponder.md).
 
 **Outpost**
-:   A lone banner planted *beyond* your border to work one distant deposit — an ore vein or a livestock herd — without dragging your whole territory out to it. It is **not** protected, so guard the road home. See [Territory & Outposts](../civilization/territory.md).
+:   A lone banner planted *beyond* your border to work one distant deposit — an ore vein for a **Miner**, a stone or clay deposit for a **Digger** (upgraded to a **Quarryworker** once you research it), a livestock herd for a **Herder**, or a crop field for a **Farmer** — without dragging your whole territory out to it. It is **not** protected, so guard the road home. See [Territory & Outposts](../civilization/territory.md).
 
 ### P
 
@@ -266,7 +266,7 @@ description: An A-to-Z reference of every Bannerbound term, each linking to the 
 :   To tear a captured settlement, city-state, or barbarian camp down for good, ending its threat permanently. See [Diplomacy](../civilization/diplomacy.md) and [Barbarians & Raids](../civilization/barbarians.md).
 
 **Regent**
-:   A stand-in who fills the Chief's role while the Chief is logged off, and steps back down when they return. See [Government & Law](../civilization/government.md).
+:   The stand-in who fills the Chief's role while the Chief is logged off — automatically the *least-resented* online member — and steps back down when the Chief returns. A regent wields only routine powers (assign jobs, direct research); the weighty, irreversible acts (confirm policies, disband, expand territory, declare war) still wait for the real Chief. See [Government & Law](../civilization/government.md).
 
 **Registration Tablet & Paper**
 :   The documents you issue at the town hall to invite another player into your settlement — a **Tablet** for the full recruit, a **Paper** as a lighter invitation. Each era you advance raises how many you can issue at once. See [Settlements & Growth](../civilization/settlements.md).
@@ -329,7 +329,7 @@ description: An A-to-Z reference of every Bannerbound term, each linking to the 
 :   The stage your settlement reaches at 25 citizens — the camp has become a real community. See [Settlements & Growth](../civilization/settlements.md).
 
 **Vote**
-:   A clickable chat ballot that settles a settlement's weighty choices — exile, war, peace, policies, palettes, disbanding. A **Council** decides most things this way, and even a **Chiefdom** routes its heaviest acts through a vote. See [Government & Law](../civilization/government.md).
+:   A clickable chat ballot that settles a settlement's weighty choices — exile, war, peace, policies, palettes, disbanding. A **Council** decides most things this way. A **Chiefdom** does not: its Chief acts alone on those same heaviest acts, no ballot required (and a solo settlement simply confirms with a second press). See [Government & Law](../civilization/government.md).
 
 ### W
 

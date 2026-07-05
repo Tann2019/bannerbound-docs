@@ -58,7 +58,7 @@ That cobblestone is all you need to begin.
     Don't burn through every rock you find. **Stone Rocks — and their sandstone cousins — are also the raw material you'll knap into stone tool heads** once you've researched Knapping (see below). Keep a healthy stash in your pack: four rocks is a cobblestone, and every rock beyond that is a swing at a tool head.
 
 ??? note "Assemble a Flint Knife in your inventory"
-    While you're in the inventory grid, you can also put together a **Flint Knife** — a reusable upgrade over the disposable blade. Combine a **Flint Blade**, a **Stick**, and a piece of **Plant Fiber** in the 2×2 grid. The knife cuts plants just like a blade, carves Crafting Stones, and — unlike a bare blade — has a durability bar so it lasts many uses before wearing out.
+    While you're in the inventory grid, you can also put together a **Flint Knife** — a light weapon that cuts and carves like a blade. Combine a **Flint Blade**, a **Stick**, and a piece of **Plant Fiber** in the 2×2 grid. The knife cuts plants and carves Crafting Stones just like a blade, and it fights better than one — but, unlike a bare blade, it **wears down with use** (about 26 cuts) and will eventually break.
 
 ## Carving the Crafting Stone
 
@@ -97,33 +97,39 @@ You don't need to wait for any research to arm your camp. Every **bone tool** as
 | --- | --- | --- |
 | **Bone Knife** | 1 Bone Blade + 1 Stick + 1 Plant Fiber | Durable everyday cutting; carving Crafting Stones |
 | **Bone Axe** | 3 Bone Blades + 2 Sticks + 1 Plant Fiber | Felling trees, carving a Chopping Stump |
-| **Bone Pickaxe** | 3 Bone Blades + 2 Sticks + 1 Plant Fiber | Breaking soft stone and ores |
+| **Bone Pickaxe** | 3 Bone Blades + 2 Sticks + 1 Plant Fiber | Breaking the stone family for drops — but *no ore*, see below |
 | **Bone Shovel** | 1 Bone Blade + 2 Sticks + 1 Plant Fiber | Digging dirt, sand, gravel |
 | **Bone Hoe** | 2 Bone Blades + 2 Sticks + 1 Plant Fiber | Tilling early farmland |
 | **Bone Sword** | 2 Bone Blades + 1 Stick + 1 Plant Fiber | A first real weapon |
 | **Bone Spear** | 1 Bone Blade + 3 Sticks + 1 Plant Fiber | Hunting at a safer distance |
-| **Bone Club** | 1 Bone + 1 Plant Fiber | The crudest bludgeon — barely any fiber to spare |
+| **Bone Club** | 1 Bone + 1 Plant Fiber | The crudest bludgeon — but its crits *stun* (see below) |
 | **Bone Saw** | 2 Bone Blades + 1 Stick | Sawing early woodwork |
 | **Bone Shears** | 2 Bone Blades + 1 Plant Fiber | Snipping leaves and wool |
 
+!!! warning "A bone pickaxe mines no ore — not even coal or copper"
+    Your **Bone Pickaxe** breaks the stone family (stone, cobblestone, and their kin) and gives you the drops, but it pulls **nothing** out of any ore. Swing it at a coal, copper, or iron seam and the block breaks — then drops *nothing at all*. Ore that actually yields something needs a **stone pickaxe**, which is exactly why shaping stone tool heads (below) is the real gate between the bone age and mining. Until then, a bone pick is for digging through rock, not for harvesting metal or coal.
+
 !!! tip "An axe before you can chop"
     Logs can't be punched free in Bannerbound — you need an **axe** to fell a tree at all. A **Bone Axe** is the usual first swing: three bone blades (one and a half bones' worth), a couple of sticks, and a fiber. Fell a tree, drop a lone log on the ground, and right-click it with the axe to carve a **Chopping Stump** for firewood. See [The First Hour](../getting-started/first-hour.md) for the full opening sequence.
+
+!!! tip "Why the Bone Club stuns"
+    A blunt weapon is worth carrying for what it does on a **critical hit**: land a crit with the **Bone Club** and the target is *stunned* for a full second — its movement is cut in half, and a struck player's vision blurs. It's a way to stagger something dangerous and get the next few swings in for free. A **rock thrown by hand** carries the same trick: barely any damage, but a brief stun on impact. (The stone hammers you smith later share this blunt stun.)
 
 ## Blades versus knives
 
 Every cutting task — harvesting fiber, carving benches, shaping tools — can be done with either a **blade** or a **knife**, but they age very differently.
 
-=== "Blades (disposable)"
+=== "Blades — a permanent edge"
 
-    **Flint Blades** and **Bone Blades** are meant to be used up. They're quick and cheap to knap straight off a hard stone surface, but they wear out fast — treat them as consumables. Bone Blades are the cheapest of all (two per bone) and are perfect for the endless grass-cutting and leaf-stripping of your first day. Blades are also the *ingredients* for the bone tools above: three bone blades lashed to sticks make a Bone Axe, for instance.
+    **Flint Blades** and **Bone Blades** *never wear out from cutting or carving* — there's no durability bar, so a single blade keeps flaking fiber off grass and carving benches for as long as you hold it. They're quick and cheap to knap straight off a hard stone surface, and Bone Blades are the cheapest of all (two per bone), perfect for the endless grass-cutting and leaf-stripping of your first day. The **only** way to use a blade up is to spend it as an *ingredient* — three bone blades lashed to sticks make a Bone Axe, for instance — so every blade in your pack is either a permanent cutter or future tool-stock.
 
-=== "Knives (durable)"
+=== "Knives — they wear down"
 
-    **Knives** do the same cutting work but carry a **durability bar**, so one knife replaces a whole handful of blades. Once you can make one, keep it on your hotbar for carving benches and everyday cutting, and save fresh blades for crafting recipes.
+    A **knife** does the same cutting and carving, but — unlike a bare blade — it **carries a durability bar and loses a point every time you cut, carve, or strike with it** (a **Flint Knife** lasts about **26 uses** before it breaks). What you get in return is that a knife also **doubles as a light weapon**, with attack reach a bare blade doesn't have. So the reason to carry one isn't that it outlasts your blades — a bare blade is actually the thriftier everyday cutter — it's to keep your **blade stock free for recipes** while still having a proper sidearm in hand.
 
 | Knife | Where you make it | Recipe | Durability |
 | --- | --- | --- | --- |
-| **Flint Knife** | 2×2 inventory grid | Flint Blade + Stick + Plant Fiber | Durable |
+| **Flint Knife** | 2×2 inventory grid | Flint Blade + Stick + Plant Fiber | ~26 uses |
 | **Bone Knife** | Crafting Stone | Bone Blade + Stick + Plant Fiber | Durable |
 | **Wooden Knife** | [Woodworking Table](woodworking.md) | a Log + a Stick | Most durable |
 

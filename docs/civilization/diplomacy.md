@@ -11,7 +11,7 @@ description: Discover neighbours, strike trades, and settle rivalries — from c
     - Open your **town hall** and click the **Diplomacy** tab. It lists every settlement, city-state, and barbarian camp you've discovered, with each one's **stance** toward you.
     - **Trade** needs the **Bartering** research, **peace** between you, and a **trading stockpile** on both sides. Only the **Chief** negotiates: propose, counter, accept — then a courier carries the goods on foot.
     - **War** starts with a one-minute warning. Rally your citizens, then win by **stealing the enemy's public standard** and carrying it back to your town hall to **capture** them.
-    - **City-states** are neutral traders. Buy what they sell, sell what they seek — or take them by force and decide their fate.
+    - **City-states** are neutral, game-run settlements. Their entry previews what they **seek** and **sell**, but there's no trade window for them yet — you can, however, take one by force and decide its fate.
 
 ---
 
@@ -29,12 +29,14 @@ The tab is organised into groups: **Known settlements** (other players' civiliza
 | **War in N** | A war warning is counting down. Fighting begins when it hits zero. |
 | **War** | Active war. Standards can be stolen, stockpiles can be raided. |
 | **Captured** | You've taken their standard — now choose their fate. |
-| **City-state** | A neutral, unclaimed settlement you can trade with or conquer. |
+| **City-state** | A neutral, game-run settlement. You can preview its market and conquer it (no trading yet). |
 
 At the top of the tab you'll also find the **Rally Citizens** toggle (only usable while at war or under raid) and, if you've recently won a war, a **"No new wars"** cooldown notice.
 
 !!! note "The Chief speaks for the settlement"
     Diplomacy is the **Chief's** business. Only the Chief can negotiate trades, declare war, or offer peace. Under a [council government](government.md), some of these become **votes** the settlement decides together — *"…wants to declare war on…"* — so bring your council along before you march.
+
+    In a **Chiefdom**, if a member who *isn't* the Chief clicks a diplomacy action (War, Peace, or Rally), it isn't performed — instead it **pings the Chief as a suggestion** (*"…suggested: declare war on…"*), and you'll see *"Suggestion sent to the chief."* It's the same suggestion channel that carries research and policy proposals up to the leader.
 
 ---
 
@@ -59,7 +61,7 @@ To open a stockpile to trade, walk up to one of your enclosed Stockpiles, open i
 
 When both sides qualify, a settlement's entry shows a **Trade** button (it reads **Trade!** when they've sent you something to look at). Open it and you'll see two pools side by side — **Your trading stock** and **Their trading stock** — and two offer trays: **Your offer** and **Their offer**.
 
-Drag goods from the pools into the offer trays to build the terms. There is no fixed "price" — as the game puts it, *"a deal is whatever both sides agree to."* When you're happy, **Propose**. The other side (a player, or a city-state's own judgement) can then **Accept**, **Counter**, or **Reject**.
+Drag goods from the pools into the offer trays to build the terms. There is no fixed "price" — as the game puts it, *"a deal is whatever both sides agree to."* When you're happy, **Propose**. The other side — the rival settlement's **Chief** — can then **Accept**, **Counter**, or **Reject**. (Only other players' settlements can trade; city-states can't yet — see [City-states](#city-states).)
 
 A negotiation moves through clear states, shown at the bottom of the window:
 
@@ -79,12 +81,18 @@ A negotiation moves through clear states, shown at the bottom of the window:
 
 This is what makes Bannerbound trade feel alive. Once a deal is accepted, both sides **gather** the promised goods from their trading stockpiles, and then a **courier** — a real citizen — sets out **on foot** to carry the cargo across the world. If no courier is free, the goods travel by **convoy** instead.
 
+!!! tip "Choose who carries the cargo"
+    Couriers come from your **Stockers** — but only the ones you've volunteered for the road. On a Stocker's Job tab, switch on the **Trading** toggle to make that citizen eligible to be sent with the goods; they'll walk the cargo to the partner settlement and go back to normal stocking when they return. See [Jobs & Labor](jobs-and-labor.md#workshop-build-workers-crafter-stocker-builder).
+
 That journey is real, and so is the danger:
 
 !!! danger "Couriers can die — and cargo is lost"
     A trade courier walks the actual landscape. If they're cut down on the road — by a mob, a barbarian, or an enemy player — *"the cargo lies where they fell,"* and that half of the deal is simply lost. A trade can also arrive **partial** when one shipment never makes it, **lapse** if an offer sits unanswered too long, or be **voided outright** if war breaks out mid-deal. Escort your convoys through dangerous country, and don't promise what you can't afford to lose.
 
 When a shipment does arrive, its goods drop into your trading stockpile (any overflow is left at the town hall). A completed exchange reports *"Trade with … completed."* If a side fails to gather the agreed goods in time, the deal falls through and the goods that were already staged are returned.
+
+!!! example "A tale of two neighbours"
+    A neighbouring settlement on the desert's edge has salt to spare and hungers for grain — perfect, since your farms overflow and your preserved-food stores are thin. You research **Bartering**, flip a Stockpile to **Show for trading**, and your Chief brokers grain-for-salt. A courier sets out across the dunes… and is jumped by [barbarians](barbarians.md) halfway home. Half your salt is lost on the sand. Next season you send the convoy with an escort — and this time, the deal completes.
 
 ---
 
@@ -97,7 +105,7 @@ War in Bannerbound is about **denial and tempo, not extermination**. You raid, b
 From the Diplomacy tab, choose **War** on a settlement at peace with you. This doesn't start the fight instantly — it sends a **one-minute warning**. Their stance flips to **War in N**, a countdown ticks, and war begins when it reaches zero, *as long as the target stays online*.
 
 !!! note "You can't ambush an empty settlement"
-    War can only be declared on a civilization with **online members** — *"War cannot be declared yet"* otherwise. This keeps conquest a contest between present players, not a raid on the sleeping.
+    By default, war can only be declared on a civilization with **online members** — *"War cannot be declared yet"* otherwise — and the warning countdown pauses if the target logs out. This keeps conquest a contest between present players, not a raid on the sleeping. A server owner can lift this requirement with the `allowOfflineWar` game rule (off by default); see [Multiplayer](../reference/multiplayer.md).
 
 ### Rally Citizens
 
@@ -116,8 +124,21 @@ The standard is also how wars are won and lost:
 2. **Carry it home.** Bring the stolen standard back to **your own town hall** to score the **capture**.
 3. **Keep your own standard flying.** To score, *your* public standard must be **standing and valid** — you can't capture an enemy while your own banner is down or stolen. And you **cannot move your own standard during a war warning or active war**, so there's no hiding it mid-fight.
 
-!!! warning "It's a race, not a slaughter"
-    A stolen standard can be **recovered** — if the defender (or their allies) reclaims it before you reach home, their banner stands again and your capture fails. Guard the carrier. This is denial made literal: capturing a settlement freezes it, it doesn't erase it.
+!!! warning "It's a race against the clock"
+    A stolen standard can be **recovered** — if the defender (or their allies) reclaims it before you reach home, their banner stands again and your capture fails. Guard the carrier. And there's a hard time limit: a stolen standard that **isn't being actively carried auto-returns to its owner after about 5 minutes**. It drops — starting that clock — the instant the carrier is **killed, logs off, or leaves the dimension**, so a raider cut down on the road hands the standard right back unless an ally scoops it up in time. This is denial made literal: capturing a settlement freezes it, it doesn't erase it.
+
+### Chasing the standard: the objective HUD
+
+The moment a standard is in play, a **war-objective panel** appears in the **top-right** of the screen — for members of **both** settlements, raiders and defenders alike. It reads *"Stolen Standard of \<faction\>"* in the target faction's colour, with the objective's **live coordinates** beneath it, updating in real time as the carrier runs. Because both sides see the same marker, a defender can give chase and a raider always knows how far home is.
+
+The Diplomacy row itself also names where you stand in the chase:
+
+| Row label | What it means |
+| --- | --- |
+| **Standard in play** | An enemy's standard has been stolen and is loose — go seize it or track it down. |
+| **Recover your standard** | *Your* standard is the one being carried — hunt down the carrier before they reach their town hall. |
+| **Captured standard** | You carried their standard home; their fate is now yours to choose. |
+| **Your standard is captured** | The enemy carried your standard home — you've been captured. |
 
 ### After the capture: their fate is yours
 
@@ -125,7 +146,7 @@ Once you've carried an enemy standard home, that settlement shows as **Captured*
 
 === "Raze"
 
-    **Tear it down.** Razing removes the settlement, ending the war on your terms. This is always available and needs nothing extra.
+    **Tear it down.** Razing removes the settlement, ending the war on your terms. This is always available and needs nothing extra. The buildings don't vanish in a blink, though — a razed settlement slowly **crumbles into ruins**, its structures peeling down toward the natural ground and leaving scattered rubble behind, so its bones linger on the map for explorers to stumble on long after.
 
 === "Annex"
 
@@ -135,24 +156,30 @@ Once you've carried an enemy standard home, that settlement shows as **Captured*
 
     **Keep it as a subordinate** rather than destroying or absorbing it — a standing partner bound beneath your banner.
 
+!!! warning "Decide within ~30 minutes"
+    A captured settlement doesn't wait forever. If you don't choose Raze, Annex, or Vassal within about **30 minutes** of the capture, it **auto-resolves** on its own: the enemy standard returns, the war ends, and you still keep the winner's cooldown — but you forfeit the chance to annex or vassalize. Make the call while it's still yours to make.
+
 ### The cooldown
 
-Winning a war isn't a licence to steamroll. Afterward your settlement enters a **winner cooldown** — *"No new wars"* for a time — during which you can't start fresh conflicts. There's also a separate **redeclare cooldown** stopping you from immediately re-warring the same neighbour. Consolidate your gains; the next war can wait.
+Winning a war isn't a licence to steamroll. Afterward your settlement enters a **winner cooldown** — *"No new wars"* for about **30 minutes** — during which you can't start fresh conflicts with anyone. There's also a separate **redeclare cooldown** of about **30 minutes** that stops you immediately re-warring the *same* neighbour. (The war warning itself, by contrast, is just **one minute** — see [Declaring war](#declaring-war).) Consolidate your gains; the next war can wait.
 
 ---
 
 ## City-states
 
-Scattered across the world are **city-states** — neutral, unclaimed settlements run by the game, not by players. They don't expand or fight for territory, but they make excellent trading partners and tempting targets. Each city-state shows on your Diplomacy tab with the **City-state** stance.
+Scattered across the world are **city-states** — neutral, unclaimed settlements run by the game, not by players. They don't expand or fight for territory, and while you **can't trade with them yet**, they make tempting targets. Each city-state shows on your Diplomacy tab with the **City-state** stance.
 
-Every city-state has a distinct economy, summarised right on its entry:
+Every city-state has a distinct economy, previewed right on its entry:
 
-- **Seeks** — the goods it wants to buy from you.
-- **Sells** — the goods it offers in return.
+- **Seeks** — the goods it would want to buy from you.
+- **Sells** — the goods it would offer in return.
 
-### Trading with a city-state
+### Reading a city-state's market
 
-Just like settlement trade, dealing with a city-state needs the **Bartering** research (its entry hints *"Bartering unlocks trade"*). Once you have it, open the trade window and compose an offer from the two pools — the city-state judges your terms and accepts, counters, or declines on its own.
+Right now a city-state's entry is a **market teaser, not a trade partner**. Its row shows a live *"Seeks … · Sells …"* line and the hint *"Bartering unlocks trade,"* but there is **no trade window for city-states yet** — you can't open a deal or compose an offer against one the way you can with another player's settlement. What that display *is* good for is **scouting**: it tells you what a city-state has and wants, so you can judge whether it's worth marching on.
+
+!!! note "Not yet tradable"
+    City-state trading is planned but not in the game today. The Diplomacy tab only *displays* a city-state's Seeks/Sells (and lets you make war or capture it); the compose-and-counter workflow described [above](#composing-a-deal) works with **player settlements only**.
 
 What a city-state **sells** depends on where it sits and what it knows. The examples below are illustrative — every city-state is different:
 
@@ -166,23 +193,22 @@ What a city-state **sells** depends on where it sits and what it knows. The exam
 | Copper or tin country (with metalworking) | Copper, tin, or bronze ingots |
 | Stone and limestone hills (with masonry) | Stone, limestone bricks, calcite |
 
-What they **seek** leans toward finished, valuable goods — **bread**, **salt**, fired **clay pots**, **leather**, **wool**, worked **metal ingots**, and (for the wealthiest) **calcite** and **emeralds**. Sell a city-state the refined goods it can't make itself and you'll always find a buyer.
+What they **seek** leans toward finished, valuable goods — **bread**, **salt**, fired **clay pots**, **leather**, **wool**, worked **metal ingots**, and (for the wealthiest) **calcite** and **emeralds**.
 
-!!! tip "Read the resource before you research"
-    A city-state only sells iron or bronze once *it* has the tech and the ore nearby — so a metal-rich neighbour is a shortcut to goods your own [territory](territory.md) may lack. Scout what each one seeks and sells before you decide whether to trade or conquer.
+!!! tip "Scout the market before you march"
+    A city-state only *"Sells"* iron or bronze once it has the tech and the ore nearby — so a metal-rich neighbour whose row lists ingots you can't make yourself is a tempting conquest target if your own [territory](territory.md) lacks that ore. Read each one's Seeks/Sells line before you decide whether it's worth the fight.
 
 ### Conquering a city-state
 
-If you'd rather take than trade, you can go to **war** with a city-state — but expect a fight, because *its mercenaries will defend it*. The path to victory is the same as against any settlement: **tear down its standard, carry it to your town hall to capture the city-state**, then choose its fate from the Diplomacy tab.
+If a city-state's market marks it as a target rather than a curiosity, you can go to **war** with one — but expect a fight, because *its mercenaries will defend it*. The path to victory is the same as against any settlement: **tear down its standard, carry it to your town hall to capture the city-state**, then choose its fate from the Diplomacy tab.
 
 A captured city-state can be:
 
-- **Razed** — destroyed outright.
+- **Razed** — torn down; like any razed settlement, its ruins slowly **crumble into the landscape** rather than vanishing at once.
 - **Kept as a Vassal** — a subordinate that answers to your banner.
 - **Annexed** — folded into your faction as a new settlement (again, this needs a free settlement slot from **Feudalism**).
 
-!!! example "A tale of two neighbours"
-    A desert city-state to your south **seeks bread** and **sells salt** — perfect, since your farms overflow and your preserved-food stores are thin. You research **Bartering**, flip a Stockpile to **Show for trading**, and your Chief brokers grain-for-salt. A courier sets out across the dunes… and is jumped by [barbarians](barbarians.md) halfway home. Half your salt is lost on the sand. Next season you send the convoy with an escort — and this time, the deal completes.
+Just as with a player settlement, a captured city-state that you leave undecided for about **30 minutes** auto-resolves on its own — the standard returns and the war ends — and *its* mercenaries mean taking one is never free.
 
 ---
 

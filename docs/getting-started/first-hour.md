@@ -56,7 +56,7 @@ Your fastest cutting tool comes from animals. Find a pig, cow, sheep, or similar
 
 Now knap it: hold a piece of Bone and **right-click a hard stone surface** — a natural stone block, your fresh cobblestone, or any exposed rock. Each Bone knaps into **2 Bone Blades**.
 
-A **Bone Blade** is a disposable cutting edge, perfect for the next step. Knap a few and keep them handy — you'll want **at least three** later to carve a Bone Axe.
+A **Bone Blade** cuts and gathers all day without ever wearing out — it's only ever *used up* when a recipe consumes it as an ingredient. Knap a few and keep them handy: you'll want **at least three** later to carve a Bone Axe.
 
 !!! note "Blade vs. knife — what carves what"
 
@@ -87,7 +87,7 @@ Sweep through tall grass and ferns to stockpile **Plant Fiber** (your early cord
 
 ## Step 5 — A Flint Knife
 
-A **knife** is the sturdier cousin of a bare blade: it does the same cutting work, carves a Crafting Stone all the same, and holds up longer before it wears out. Your Flint Blade alone can carry you through the next step — so this one is recommended, not required — but a knife spares you re-knapping once the real cutting begins.
+A **knife** does the same cutting and carving work as a bare blade, and it doubles as a light weapon for hunting and defense. Here's the part players often get backwards: a **Flint Blade never wears out** from cutting or carving — it does those jobs forever and is only ever used up when a recipe consumes it. So don't make a knife for durability; your Flint Blade alone can carry you through the next step, which is why this one is **recommended, not required**. Make it for the combat edge — and so your knapped blades stay free as crafting stock.
 
 Back to the **2×2 inventory crafting grid**. Combine a **Flint Blade**, a **Stick**, and a piece of **Plant Fiber** to assemble a **Flint Knife** — the fiber is the binding that lashes the edge to the haft.
 
@@ -127,7 +127,7 @@ Now for fuel. First, a gotcha that stops a lot of new players cold:
 With an axe in hand, fell a tree and gather some logs. Then:
 
 1. **Carve a Chopping Stump.** Place a single, **isolated** log on the ground — not touching other logs — and **right-click it with your axe**. It becomes a **Chopping Stump**. (Connected tree logs are ignored, so make sure the log stands alone.)
-2. **Split Firewood.** Put logs onto the stump, then **right-click it with an axe** to chop. Each swing has about a **50%** chance to produce a piece of **Firewood**. Keep swinging until you have **at least four pieces**.
+2. **Split Firewood.** Put logs onto the stump, then **right-click it with an axe** to chop. Each swing has about an **85%** chance (roughly six of every seven strokes) to produce a piece of **Firewood**. Keep swinging until you have **at least four pieces**.
 
 Firewood is the fuel that replaces charcoal in your earliest recipes — most importantly, the campfire. There's much more to timber in [Woodworking](../antiquity/woodworking.md).
 
@@ -153,6 +153,9 @@ The finish line. The **Campfire** is stacked by hand, no crafting grid needed:
 
 You reached a campfire on the fastest possible path. A few side tools are worth knowing about for the hours ahead:
 
+Foreman's Rod
+: The tool you'll reach for constantly once you have citizens — it's how you assign jobs and mark out work sites. Carve one at your **Crafting Stone** from **1 Stick + 1 Plant Fiber**. See [Jobs & Labor](../civilization/jobs-and-labor.md).
+
 Stone Spear
 : Knapped for the hunt — a thrown or thrusting weapon that brings back meat, hide, and feather. See [Fletching & Archery](../antiquity/fletching-and-archery.md).
 
@@ -160,7 +163,7 @@ Primitive Bow
 : A ranged option for hunting skittish animals from a distance.
 
 Bone & Wooden Knives
-: Sturdier cutting tools than a flint blade — a **Bone Knife** once you have a Crafting Stone, and later a **Wooden Knife** assembled at a woodworking table.
+: Knives that double as light weapons — a step up from a bare blade for hunting and defense. Craft a **Bone Knife** once you have a Crafting Stone, and later a **Wooden Knife** at a woodworking table.
 
 None of these block your first settlement — but they make feeding and defending it far easier.
 

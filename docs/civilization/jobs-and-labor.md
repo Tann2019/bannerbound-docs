@@ -93,6 +93,7 @@ Whenever a worker isn't producing, their status tells you why. Learn to read the
 | **Idle — no tool** | No valid tool in the slot or in tool storage | Give a tool of the right age |
 | **Idle — no drop-off** | No storage marked to deposit into | Mark a drop-off with the rod |
 | **Idle — drop-off full** | Storage has no room left | Add storage or clear the chest |
+| **Grove full — waiting on storage** | A plantation Forester's grove is fully grown but has nowhere to drop the harvest | Add or clear the log drop-off |
 | **Idle — nothing to do** | No work in reach (empty region, nothing to gather) | Mark a source or move the region |
 | **Idle — needs saplings / needs seeds** | Out of planting stock | Restock the seed/sapling source |
 | **Resting — no stamina** | Exhausted; will recover | Let them rest; check [Housing](housing.md) |
@@ -175,11 +176,16 @@ Build a pen in claimed grassland and bind it with the rod. A valid pen must be *
 
 Open the **Herd & harvest** panel to set **"keep N adults"** — the herd grows toward that number, then surplus adults are harvested into your **harvest storage**. Choose *Auto* to breed the pen to full and never cull. Note the two storage roles: **food storage** is needed to *breed*, **harvest storage** is needed to *cull*.
 
+!!! note "Muck out the pen"
+    Penned livestock leave **manure** pats on the ground, and a fouled pen **breeds poorly** until it's cleared — your Herder mucks it out as routine upkeep. Breaking a pat (a shovel is quickest) yields **Dung**: with **Fertilization** researched, it's an era-appropriate fertilizer you right-click onto crops or saplings by hand to hurry their growth, exactly like bone meal. That's separate from the Farmer's automatic field fertilizing.
+
 ### Hunter
 
 Unlike a herder, a **Hunter** ranges out onto **unclaimed land** to take wild game — meat, hide, and feather that no pen can provide. Mark a hunter's camp and choose which **prey** to pursue.
 
 The hunt is hands-on for the AI: calm animals are stalked in a crouch, while a spooked one flees and must be chased. A **spear** opens with a thrown strike; **Archery** lets a hunter drop game from the treeline before it ever notices. How the kill is made even affects the **hide quality** it yields at the [Tannery](../antiquity/tannery.md).
+
+Your hunters live by the same wild-animal instincts you do — prey that flees on sight, herds that scatter, quarry that tires on a long chase. See [Hunting](../antiquity/hunting.md) for the full picture of how wild game behaves.
 
 ### Digger → Quarryworker
 
@@ -199,14 +205,16 @@ The settlement watch. A **Guard** patrols your borders and fights off raiders an
 
 Guards are your answer to [Barbarians](barbarians.md) and hostile neighbours. Pair them with [Walls](walls.md) for a border that holds.
 
-## Workshop workers: Crafter & Stocker
+## Workshop & build workers: Crafter, Stocker & Builder
 
-Two roles keep your buildings humming rather than the wilds:
+These roles keep your buildings humming and your walls rising, rather than working the wilds:
 
 - A **Crafter** works a bound workshop, filling its orders and gaining skill over time.
 - A **Stocker** hauls goods between stores and workshops so orders never stall for want of parts — and delivers tools to worker tool storage.
+    - **Trading** toggle — flip this on in a stocker's Job tab and that stocker becomes eligible as your **trade courier**: when a deal is struck, they physically carry the agreed goods on foot to the partner settlement, then pick their stocking back up when they return. See [Diplomacy](diplomacy.md) for the trade it serves.
+- A **Builder** raises your walls. It's an *ordered* worker with no marker and no tool — its worksite **is** your committed [wall plan](walls.md). It fetches materials from your stockpiles and depots, clears vegetation off the footprint, lays the plan's ghost-blocks, and tears down any obsolete wall (refunding the blocks). Unlock it through the **Wall Building** research; see [Walls](walls.md) and [Building](../antiquity/building.md).
 
-Both are covered in depth on the [Workshops](workshops.md) page, including how to bind a workshop and queue its orders.
+The Crafter and Stocker are covered in depth on the [Workshops](workshops.md) page, including how to bind a workshop and queue its orders.
 
 ## The Labor board
 

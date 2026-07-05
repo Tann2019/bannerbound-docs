@@ -71,6 +71,9 @@ That lit campfire is your **town hall** — the single most important block you 
 - :material-gavel: **Policies** — toggle the rules your settlement lives by.
 - :material-vote: **Votes** — the decisions your [government](../civilization/government.md) puts to the people.
 
+!!! note "At first you rule by influence, not decree"
+    A freshly founded settlement has no government yet — you begin in **anarchy**. Your citizens aren't idle: they **self-organize into gatherers** on their own, foraging, fishing, and cutting wood to keep the young settlement fed. But you can't *pin* a particular citizen to a particular job until you **enact a code of laws** and choose a [government](../civilization/government.md) — a Chiefdom or a Council. Assign work too early and the town hall says so plainly: *"No code of laws — citizens won't obey assignments yet."*
+
 As your settlement grows and eras turn, the town hall gains still more tabs — [faith](../civilization/faith.md), diplomacy, [walls](../civilization/walls.md), statistics, and later the [**crisis decisions**](../civilization/crises.md) that will test your leadership. For now, know that this campfire is where you rule from. Guard it.
 
 !!! danger "If the town hall is destroyed, so is your seat of power"

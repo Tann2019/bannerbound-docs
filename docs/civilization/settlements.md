@@ -8,7 +8,7 @@ description: What a settlement is, how it climbs the Hearth-to-City ladder, and 
 <p class="bb-lead"><em>Every civilization starts as a single spark of firelight. From that claimed campfire — a handful of settlers foraging in the dark — you will grow a Hearth into a Tribe, a Tribe into a Village, and, in time, a Village into a City that fills the horizon.</em></p>
 
 !!! abstract "The short of it"
-    A **settlement** is a claimed campfire (your **town hall**), the citizens who gather around it, the territory you claim, and the **faction banner** that binds it all together. It grows in two ways: **immigration** draws in newcomers up to your era's **immigration floor**, and after that **births** carry you higher — but only while you keep a **food surplus** and build enough **beds**. Growth passes named milestones: **Hearth → Tribe → Village → Town → City**.
+    A **settlement** is a claimed campfire (your **town hall**), the citizens who gather around it, the territory you claim, and the **faction banner** that binds it all together. It grows in two ways: **immigration** draws in newcomers up to your era's **immigration floor**, and after that **births** carry you higher — but only while you keep a **food surplus** and build enough **beds**. Growth passes named milestones — **Hearth → Tribe → Village** today, with **Town** and **City** planned for later.
 
 ## What a settlement is
 
@@ -37,8 +37,11 @@ As your population climbs, your settlement crosses named thresholds. Each **stag
 | :material-campfire: **Hearth** | Your founding camp, before any government. A tiny band of settlers around the fire. | *(the beginning)* |
 | :material-account-group: **Tribe** | You have enacted a government — a Code of Laws now guides your people. | *"[Name] has become a Tribe."* |
 | :material-home-group: **Village** | Your population reaches **25 citizens** — the camp has become a real community. | *"[Name] has grown into a Village!"* |
-| :material-town-hall: **Town** | A mature, bustling settlement of many households and workshops. | *"[Name] has risen to a Town!"* |
-| :material-city: **City** | The grand milestone — a sprawling seat of civilization. | *"[Name] is now a City!"* |
+| :material-town-hall: **Town** | *Planned.* A mature, bustling settlement of many households and workshops. | *(not yet in-game)* |
+| :material-city: **City** | *Planned.* The grand milestone — a sprawling seat of civilization. | *(not yet in-game)* |
+
+!!! note "Growth currently caps at Village"
+    **Town** and **City** are on the ladder to show where the road leads, but today a settlement's stage tops out at **Village** — reaching **25 citizens** is the highest milestone in the game right now. The Town and City stage-ups aren't wired up yet, so don't expect their heralds or fireworks no matter how large you grow.
 
 !!! note "Hearth to Tribe is a choice, not just a headcount"
     You leave the **Hearth** stage when you enact a government, not simply by growing. Immigration first fills your camp up to the immigration floor; once you're there, the town hall announces *"It is time to enact the code of laws"* and invites you to choose how you'll be ruled. Making that choice — and hearing *"[Name] has become a Tribe"* light up the sky — turns your Hearth into a **Tribe**. See [Government](government.md) for the forms you can pick.
@@ -51,7 +54,7 @@ Two very different forces feed your growth, and it helps to know which one you'r
 
 In the early game your numbers swell through **immigration** — settlers who hear of your fire and come to join it. Two things drive it:
 
-- **Culture is the currency.** Your settlement steadily builds culture, and the **progress-to-next-citizen** bar you see at the town hall is that culture filling up. When it's full, a newcomer arrives and the cost is spent. Newcomers come one at a time, with a pause between each, so growth feels like a steady trickle rather than a flood. Culture comes largely from your claimed land and researches — see [Culture & Heraldry](culture-and-heraldry.md).
+- **Culture is the currency.** Your settlement steadily builds culture, and the **progress-to-next-citizen** bar you see at the town hall is that culture filling up. When it's full, a newcomer arrives and the cost is spent. **Each newcomer costs more culture than the one before** — about **50 culture times your current population plus one** — so the price climbs by 50 with every citizen you gain. Your first settlers arrive quickly; the last ones before the [immigration floor](#the-immigration-floor) come slowly. That deceleration is by design, not a stalled culture rate. Newcomers still come one at a time, with a pause between each, so growth feels like a steady trickle rather than a flood. Culture comes largely from your claimed land and researches — see [Culture & Heraldry](culture-and-heraldry.md).
 - **Food is the gate.** Food is **not** spent per citizen — it's a green light. A settlement only takes in newcomers while it's *feeding itself*: while your **net food** is at or above zero. Slip into a deficit and immigration pauses until your fields, herds, and hunters catch up.
 
 Open the town hall and read the **Food** bar. It tells you plainly where you stand:
@@ -113,14 +116,30 @@ Not every settlement lasts. A people can be disbanded by choice — or collapse 
 
 ### Disbanding — the peaceful end
 
-To end a settlement deliberately, call a **disband vote** at the town center (the town hall). Anyone can start it, and the whole settlement is told: *"…started a vote on disbanding the colony! Vote at the town center. Expires in 3 minutes."*
+Ending a settlement deliberately happens at the town center (the town hall) — but *how* it happens depends on how many of you there are and how you're ruled.
 
-- The window lasts **3 minutes**.
-- The vote must be **unanimous** — *every* member has to agree. When they do: *"Disband vote passed unanimously. Settlement disbanding…"*
-- If even one member doesn't vote before the timer runs out, the vote expires and nothing happens.
+=== "Solo (one member)"
+
+    A one-person settlement skips the vote entirely. Press **Disband**, and the town hall asks you to confirm: *"…Press Disband again to confirm."* Press it a second time and the settlement dissolves. The double-press is a guard so a single misclick can't wipe your citizens and claims.
+
+=== "Chiefdom"
+
+    The seated **Chief** disbands *unilaterally* — no vote, just the same two-press confirm as a solo settlement (press **Disband**, then press again). A [regent](government.md) standing in for the Chief **cannot** — disbanding is a weighty, irreversible act reserved for the real Chief.
+
+=== "Council (or anarchy)"
+
+    With more than one member and no single ruler, disbanding takes a **disband vote**. Anyone can start it, and the whole settlement is told: *"…started a vote on disbanding the colony! Vote at the town center. Expires in 3 minutes."*
+
+    - The window lasts **3 minutes**.
+    - The vote must be **unanimous** — *every* member has to agree. When they do: *"Disband vote passed unanimously. Settlement disbanding…"*
+    - If even one member doesn't vote before the timer runs out, the vote expires and nothing happens.
+    - A Council running the **Opinionated Crowd** policy adds one last step: once the members agree, the choice is put to the citizens in a tribe-vote reveal — if they refuse, the disband is blocked.
 
 !!! danger "Disbanding is permanent — and blocked under attack"
-    Disbanding **permanently removes your citizens and claims** — there is no undo. And you **cannot disband while your settlement is under attack**: *"You can't disband while your settlement is under attack — survive the raid or make peace first."* Weather the [raid](barbarians.md) or make [peace](diplomacy.md) before you can lay the settlement to rest.
+    Disbanding **permanently removes your citizens and releases your claims** — there is no undo. And you **cannot disband while your settlement is under attack**: *"You can't disband while your settlement is under attack — survive the raid or make peace first."* Weather the [raid](barbarians.md) or make [peace](diplomacy.md) before you can lay the settlement to rest.
+
+!!! note "A fallen settlement crumbles into ruins — it doesn't vanish"
+    Disbanding removes your citizens and releases your claims at once, but its **buildings aren't deleted on the spot**. Over time — and only while the chunks are loaded — the structures slowly crumble down toward the natural ground, leaving scattered rubble where your town once stood. The same decay befalls a settlement that's [razed](diplomacy.md) in war, so explorers can stumble on the crumbling remains of abandoned colonies and fallen city-states long after their people are gone. See [The World](../reference/the-world.md).
 
 ### Collapse — the unwilling end
 

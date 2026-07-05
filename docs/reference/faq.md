@@ -134,6 +134,7 @@ Placing your standard gets rejected? It's one of these:
 - **Too close to a city-state.** You can't settle on or beside a city-state's territory — give it a wide berth.
 - **Banner color already taken.** Each settlement on the server needs a **unique** banner color. Pick another.
 - **Invalid name.** Names must be **3–24 characters** — letters, numbers, spaces, hyphens, underscores, or apostrophes. And a name already in use is rejected.
+- **Server is full.** *"Maximum factions in the server."* Every banner color is already claimed, so the server has hit its hard cap on settlements. There's nothing you can fix client-side — an existing settlement has to be razed or disbanded before a new color frees up.
 
 See [Founding a Settlement](../getting-started/founding-a-settlement.md).
 
