@@ -34,6 +34,12 @@ Once you have flint, knap it the same way. Hold the **Flint** and right-click a 
 !!! info "Two different meanings of 'knapping'"
     This surface-flaking — smashing gravel, flint, and bone against rock to pop off blades — is the *simple* knapping you do from your very first minute. It is **not** the same as the timing minigame further down this page, which shapes **stone tool heads** and only opens once you've earned the **Knapping** research. Blades first; heads much later.
 
+??? example "Recipes: hard-surface knapping"
+
+    --8<-- "recipes/knapping-on-a-hard-surface.md"
+
+    [Open the full Recipe Reference :octicons-arrow-right-24:](../reference/recipes.md#knapping-on-a-hard-surface)
+
 ## Cutting: fiber and sticks
 
 A blade is not just for tools — it's how you harvest the soft materials every early recipe wants. Hold a **blade or knife** and break plants with it:
@@ -88,6 +94,8 @@ The Crafting Stone crafts by **piles, not patterns** — there's no grid to line
     3. **Sneak + right-click** the stone. The Fire Sticks pop off — pick them up.
 
     From here the recipe list opens wide: **Cobblestone** from four rocks, **Plant String** and **Fiber Rope** from fiber, the bone tools below, and every hafted stone tool all come together on this same slab.
+
+The slab's full menu runs long — for the complete list of piles it accepts, see [every Crafting Stone recipe](../reference/recipes.md#crafting-stone) in the Recipe Reference.
 
 ## Bone tools — your first kit
 
@@ -169,6 +177,12 @@ With a head in hand, finish the tool back on the **Crafting Stone**: pile the he
 
 !!! info "Heads for the crafts beyond"
     The same minigame also shapes a **Stone Hammer Head** and a **Stone Chisel** — the tools you'll need at the anvil and the mason's bench. A hammer hafts on the Crafting Stone like the others (hammer head + a stick + a fiber). See [Masonry](masonry.md) for dressing stone and [Metalworking](metalworking.md) for cold-hammering metal, where those two earn their keep.
+
+??? example "Recipes: the knapping silhouettes"
+
+    --8<-- "recipes/knapping-chipping-tool-heads.md"
+
+    [Open the full Recipe Reference :octicons-arrow-right-24:](../reference/recipes.md#knapping-chipping-tool-heads)
 
 ## Where to next
 

@@ -51,6 +51,8 @@ There are **three ways** a head comes to be, and they're the real story of this 
 - **Knapped** — Stone heads are *shaped by hand* in the [knapping](knapping.md) minigame, then hafted at the Crafting Stone. A well-worked head even **carries its quality** through to the finished tool.
 - **Cast, then forged** — Metal heads are poured molten into a fired mould set on a [Stone Anvil](metalworking.md), then **cold-hammered** on that same anvil with a stick to become a finished, quality-graded tool.
 
+See [the forging recipes](../reference/recipes.md#stone-anvil-cold-hammer-forging) for the exact cold-hammer steps that turn a cast head into a finished, hafted tool.
+
 ## The tiers, bone to bronze
 
 ### <span class="bb-tier bone">Bone</span> Bone Age
@@ -127,6 +129,12 @@ Bronze pours into the **same moulds** as copper and tin but casts a **harder, lo
 
 !!! warning "A stone hammer can't finish bronze"
     A hammer carries a **rank** of its own, and a workpiece only reaches top quality when the hammer is close enough in rank to the metal. A **Stone Hammer** (or a copper/tin one) forges copper and tin to full **Masterwork** — but bronze sits a rank higher, and a stone hammer will **cap a bronze tool at Standard** no matter how clean your strikes. To forge top-quality bronze, hammer it with a **copper, tin, or bronze** hammer. Cast yourself a proper metal hammer *before* you start swinging on bronze.
+
+??? example "Recipes: metals, moulds & alloys"
+
+    --8<-- "recipes/metals-moulds-alloys.md"
+
+    [Open the full Recipe Reference :octicons-arrow-right-24:](../reference/recipes.md#metals-moulds-alloys)
 
 ## Tool types at a glance
 

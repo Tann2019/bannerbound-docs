@@ -140,6 +140,12 @@ Hang the **Cured Hide** back on the tanning rack. It dries in place (you'll see 
 
 That leather goes straight into your economy — waterskins, bindings, satchels, and the armor below.
 
+??? example "Recipes: the Drying Rack"
+
+    --8<-- "recipes/drying-rack.md"
+
+    [Open the full Recipe Reference :octicons-arrow-right-24:](../reference/recipes.md#drying-rack)
+
 ---
 
 ## Armor: the Armorer's Workbench

@@ -48,6 +48,12 @@ Working the mortar is a little hands-on minigame rather than a menu. The rhythm 
 !!! question "Where did the water go?"
     Poured water you don't want to use isn't lost — shift-right-click a water-filled mortar with an empty **Glass Bottle** to scoop it back out.
 
+??? example "Recipes: the Mortar & Pestle"
+
+    --8<-- "recipes/mortar-pestle.md"
+
+    [Open the full Recipe Reference :octicons-arrow-right-24:](../reference/recipes.md#mortar-pestle)
+
 ## The herb garden
 
 Herbalism reveals eight plants — four that lead to poisons, four that lead to cures. They aren't sorted into tidy poison-lands and cure-lands: the mountains grow both **wolfsbane** and **arnica**, the jungle both **curare** and **cinchona**, the forest both **nightshade** and **yarrow**. The deliberate rule is subtler — **no biome grows a poison alongside the very antidote that treats it**. Each cure is always somewhere the poison isn't, which turns medicine into a reason to trade and travel (and, sometimes, to fight).

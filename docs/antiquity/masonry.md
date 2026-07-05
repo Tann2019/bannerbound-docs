@@ -38,6 +38,12 @@ Both blocks fuse into a **Mason's Bench**, which is **two blocks long** — plac
 !!! tip "Site it where the stone is"
     Because you'll be feeding raw stone into the bench and pulling dressed blocks back out, build it next to your quarry, your cobble stockpile, or wherever a road can reach — you'll be shuttling stacks in and out.
 
+??? example "Recipes: the Mason's Bench"
+
+    --8<-- "recipes/masons-bench.md"
+
+    [Open the full Recipe Reference :octicons-arrow-right-24:](../reference/recipes.md#masons-bench)
+
 ## Batch stone-working
 
 This is the heart of masonry. The bench doesn't do one block at a time — you set a **budget**, queue the **cuts** you want, and dress the entire pile in one go.

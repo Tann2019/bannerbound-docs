@@ -73,6 +73,12 @@ When the smelt finishes, **open the door and right-click empty-handed** to take 
 !!! info "Two roads for copper"
     Raw copper can go either way: smelt it to a solid **ingot** here, or melt it in a **crucible** (next section) as liquid metal for casting. Iron is smelted to ingots for later, Medieval-era toolmaking — it is not cast into bronze-age parts. Tin is never smelted to an ingot in the Bloomery at all — it only melts in a **crucible**, chiefly on its way to bronze.
 
+??? example "Recipes: Bloomery smelting"
+
+    --8<-- "recipes/bloomery-smelting.md"
+
+    [Open the full Recipe Reference :octicons-arrow-right-24:](../reference/recipes.md#bloomery-smelting)
+
 ---
 
 ## The Crucible — melting for the pour
@@ -120,6 +126,12 @@ There is a mould for every part in the age. Each one drinks a set amount of meta
 
 !!! tip "Pour only takes what it needs"
     A pour fills the mould up to its requirement and **no further** — any extra metal stays in the crucible to cool, top up a second cast, or add to your next charge. A single well-filled crucible can often cast two small parts back to back.
+
+??? example "Recipes: metals, moulds & alloys"
+
+    --8<-- "recipes/metals-moulds-alloys.md"
+
+    [Open the full Recipe Reference :octicons-arrow-right-24:](../reference/recipes.md#metals-moulds-alloys)
 
 ---
 
@@ -174,6 +186,12 @@ Quality drives the tool's **durability**, its **effectiveness**, and a **chance 
     3. **Set an Axe Mold** on your dressed Stone Anvil and **pour** the molten crucible in.
     4. **Wait**, then lift the rough **Copper Axe Head**.
     5. **Stack the head plus a stick** on the anvil, take up a Hammer, and **cold-hammer** — release on the green, sneak-click to bank once you're happy. Out comes a finished **Copper Axe** at the quality you forged.
+
+??? example "Every forging recipe — head + haft → tool"
+
+    --8<-- "recipes/stone-anvil-cold-hammer-forging.md"
+
+    [See the full Recipe Reference :octicons-arrow-right-24:](../reference/recipes.md#stone-anvil-cold-hammer-forging)
 
 ---
 

@@ -88,6 +88,12 @@ With a build list set, right-click the table with a **Bone Saw** to begin **Sawi
     4. Right-click the table with the Bone Saw and hold left-click, sawing up and down until the strokes finish.
     5. Collect a fresh pile of planks and two new tools — all from one pull of the saw.
 
+??? example "Recipes: the Woodworking Table"
+
+    --8<-- "recipes/woodworking-table.md"
+
+    [Open the full Recipe Reference :octicons-arrow-right-24:](../reference/recipes.md#woodworking-table)
+
 ---
 
 ## What the bench can make

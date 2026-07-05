@@ -100,6 +100,12 @@ A metal shaft nudges damage up a few percent per point of weight — but weight 
 !!! warning "Unknown ammunition"
     An arrow is only usable if your civilization **recognizes all three of its materials**. Pick up a stray arrow tipped with a metal you haven't researched yet and it reads as *"You don't recognize this ammunition"* — you can't fire it until you've unlocked its parts. Loot from other cultures may sit useless in your quiver until your [research](../civilization/research-and-eras.md) catches up.
 
+??? example "Recipes: arrow parts"
+
+    --8<-- "recipes/arrow-parts.md"
+
+    [Open the full Recipe Reference :octicons-arrow-right-24:](../reference/recipes.md#arrow-parts)
+
 ## The Fletching Station
 
 Bows, arrows, slings, and rods are not made on a workbench — they are **hand-fletched** at the **Fletching Station**, where a timing minigame turns loose parts into a finished item with a **quality** stamped on it.
@@ -135,6 +141,12 @@ Quality is not cosmetic — it scales the item's real strength: a **bow's** arro
 
 !!! warning "Your hands have a ceiling"
     Hand-crafting at the station **caps out at Fine**. To reach **Masterwork** and beyond you need a skilled **Fletcher** citizen working good equipment — the settlement's first dedicated crafter NPC. Set up a [Fletchery workshop](../civilization/workshops.md) and let a specialist take the craft past what your own hands can manage.
+
+??? example "Recipes: the Fletching Station"
+
+    --8<-- "recipes/fletching-station.md"
+
+    [Open the full Recipe Reference :octicons-arrow-right-24:](../reference/recipes.md#fletching-station)
 
 ## Spears — thrown weapons
 

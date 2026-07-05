@@ -74,6 +74,12 @@ The Flint Blade is the keystone tool of your first hour. It cuts plants, and —
 
     "Hard stone surface" means natural stone, cobblestone, or exposed rock — not dirt, grass, or sand. If a right-click does nothing, you're aiming at the wrong block. Stand over a patch of stone (or drop your own cobblestone) and knap on that.
 
+??? example "Recipes: hard-surface knapping"
+
+    --8<-- "recipes/knapping-on-a-hard-surface.md"
+
+    [Open the full Recipe Reference :octicons-arrow-right-24:](../reference/recipes.md#knapping-on-a-hard-surface)
+
 ## Step 4 — Plant Fiber and Sticks
 
 With any blade in hand, the world becomes raw material:
@@ -173,3 +179,4 @@ None of these block your first settlement — but they make feeding and defendin
 - [The Core Loop](core-loop.md) — the gather → research → grow → defend rhythm that carries the whole game.
 - [Knapping](../antiquity/knapping.md) — the full stone-tool tree, in depth.
 - [Woodworking](../antiquity/woodworking.md) — from the Chopping Stump to a proper woodworking table.
+- [Recipe Reference](../reference/recipes.md) — every recipe in the mod, laid out in one searchable place.

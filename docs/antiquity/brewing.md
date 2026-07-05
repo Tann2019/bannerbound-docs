@@ -86,6 +86,12 @@ Which crushed fruit you use decides the drink. Both are light, everyday brews th
 
 Both are modest in strength and restore a little food when you drink them. The recipes are data-driven, so a modpack can add more fermentables and grogs; the brewer and troughs pick them up automatically.
 
+??? example "Recipes: grog"
+
+    --8<-- "recipes/fermentation-trough-grog.md"
+
+    [Open the full Recipe Reference :octicons-arrow-right-24:](../reference/recipes.md#fermentation-trough-grog)
+
 ## Step 4 — Drink it
 
 A finished pool can be drunk two ways:

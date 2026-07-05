@@ -26,7 +26,7 @@ The trick is drying it. Lay **Plant Fiber** on a **drying rack** and leave it in
 !!! note "Unlocked with Housing"
     Thatch building blocks — the slab, stairs, door, bed, and the bundle itself — become craftable once you complete the **Housing** research. Until then, dried bundles are just a material. See [Housing](../civilization/housing.md).
 
-From bundles, shape the thatch family on a **Crafting Stone**:
+From bundles, shape the thatch family on a **Crafting Stone** — jump to [these recipes on the Crafting Stone](../reference/recipes.md#crafting-stone) for the whole set, or read them off below:
 
 | You place on the Crafting Stone… | You get | Notes |
 | --- | --- | --- |
@@ -132,7 +132,7 @@ Antiquity has two fence lines, both available in **every wood type** — oak, sp
 
 === "Rope Fences"
 
-    A **Rope Fence** is a bare upright post; a rope slung between two of them is what actually pens the gap. Place your Rope Fences (and **Rope Fence Gates** where you want a way through), then tie the posts together:
+    A **Rope Fence** is a bare upright post; a rope slung between two of them is what actually pens the gap. You craft the posts and gates from a log and Fiber Rope — see [the rope fences in the crafting grid](../reference/recipes.md#inventory-crafting-grid). Place your Rope Fences (and **Rope Fence Gates** where you want a way through), then tie the posts together:
 
     - Hold **Fiber Rope** and **right-click one post**, then **right-click a second post or a gate upright**. A rope stretches between the two tie points.
     - A gate has **two** tie points (its left and right uprights), so a fence line can pass straight through it.

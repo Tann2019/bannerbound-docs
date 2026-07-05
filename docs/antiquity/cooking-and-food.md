@@ -100,6 +100,12 @@ Any combination the recipes don't recognise still cooks — it just comes out as
 
 Learning **Stews** also unlocks the **Cook**, a citizen [crafter](../civilization/workshops.md) who keeps a **Kitchen's** stew pots simmering for you. Set up a Kitchen [workshop](../civilization/workshops.md), staff it with a Cook, and your settlement brews and refreshes its own stews — turning raw supplies into stored food without you standing over the fire.
 
+??? example "Recipes: stews"
+
+    --8<-- "recipes/cooking-pot-stews.md"
+
+    [Open the full Recipe Reference :octicons-arrow-right-24:](../reference/recipes.md#cooking-pot-stews)
+
 ---
 
 ## Salt and preservation
@@ -147,6 +153,12 @@ Using a rack is simple:
 
 !!! tip "Preservation is a trade-off"
     Dried food sits a little *below* freshly cooked meat in food value — but it lasts **forever**. Preservation trades a bit of peak nourishment for the certainty that your rations will still be good next season. For a hoard you won't touch for a while, dry it; for tonight's meal, cook it.
+
+??? example "Recipes: the Drying Rack"
+
+    --8<-- "recipes/drying-rack.md"
+
+    [Open the full Recipe Reference :octicons-arrow-right-24:](../reference/recipes.md#drying-rack)
 
 ### Choosing a method
 

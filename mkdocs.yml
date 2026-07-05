@@ -126,7 +126,10 @@ markdown_extensions:
   - pymdownx.critic
   - pymdownx.details
   - pymdownx.smartsymbols
-  - pymdownx.snippets
+  - pymdownx.snippets:
+      base_path:
+        - includes
+      check_paths: true
   - pymdownx.inlinehilite
   - pymdownx.highlight:
       anchor_linenums: true

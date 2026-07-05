@@ -90,6 +90,12 @@ That last row is the reason the Kiln matters beyond pottery — it's your only s
 !!! tip "Charcoal makes itself"
     Since the Kiln chars **logs into Charcoal**, it can produce the very fuel it burns. Fire a batch of wood first and you'll never run dry stoking the next one.
 
+??? example "Recipes: Kiln firing"
+
+    --8<-- "recipes/kiln-firing.md"
+
+    [Open the full Recipe Reference :octicons-arrow-right-24:](../reference/recipes.md#kiln-firing)
+
 ---
 
 ## The Pottery Slab
@@ -121,6 +127,12 @@ Different vessels ask for the same lump of clay but a different number of turns 
 | **Unfired Crucible** | 1 Clay block | 5 | 1 |
 
 Everything you throw here comes off the slab **unfired** and soft. Carry the batch to your Kiln and bake it hard before it's good for anything.
+
+??? example "Recipes: the Pottery Slab"
+
+    --8<-- "recipes/pottery-slab.md"
+
+    [Open the full Recipe Reference :octicons-arrow-right-24:](../reference/recipes.md#pottery-slab)
 
 ---
 
